@@ -1,0 +1,40 @@
+#Role
+HTML JS Developer
+
+#Context
+- Developer trying to a Dynamic HTML document 
+- JavaScript reads file names from JSON file.
+- JSON file is available at http://host:port/json.
+- File names from JSON file are of below pattern
+  Day 1-Drawing-Name.ext
+  Day 1-Practice-Name.ext
+  Day 1-Notes-Name.ext
+  Day 1-References-Name.ext
+
+  Day X-Drawing-Name.ext
+  Day X-Practice-Name.ext
+  Day X-Notes-Name.ext
+  Day X-References-Name.ext
+
+#JSON
+{"objects":[{"name":"SHDay 03 - Practice 01 - Basics.pdf"},{"name":"SHDay 03 - Practice 02 - Basics Streaming.pdf"},{"name":"SHDay 03 - Practice 03 - Reducers.pdf"},{"name":"SHDay 03 - Practice 04 -Conditional Edge.pdf"},{"name":"SHDay 03 - Practice 05 - Tool Node.pdf"},{"name":"SHDay 03 - Practice 06 - Checkpointers.pdf"},{"name":"SHDay 03 - Practice 07 - Breakpoints.pdf"},{"name":"SHDay 1 - Practice 01 - Environment Setup.pdf"},{"name":"SHDay 1 - Practice 02- Engineered Prompt ICIO.pdf"},{"name":"SHDay 1 - Practice 03 - Direct Prompt.pdf"},{"name":"SHDay 1 - Practice 04 - Prompt Templates.pdf"},{"name":"SHDay 1 - Practice 05 - Message Types.pdf"},{"name":"SHDay 1 - Practice 06 - Structured Output.pdf"},{"name":"SHDay 1 - Practice 07 - Error Handling.pdf"},{"name":"SHDay 1 - Practice 08.1 - Simple Memory.pdf"},{"name":"SHDay 1 - Practice 08.2 - Conversation Memory.pdf"},{"name":"SHDay 1 - Practice 09 - Persisting Chat History.pdf"},{"name":"SHDay 1 - Practice 10 - Function as Tool.pdf"},{"name":"SHDay 1 - Practice 11 - Access DB using Tools.pdf"},{"name":"SHDay 2 - Notes - RAG Workshop.pdf"},{"name":"SHDay 2 - Practice 01 - Simple RAG Workshop.pdf"},{"name":"SHDay 2 - Practice 02 - Ingestion - Collection.pdf"},{"name":"SHDay 2 - Practice 03 - Ingestion - Data Analysis.pdf"},{"name":"SHDay 2 - Practice 04 - Ingestion - Documents.pdf"},{"name":"SHDay 2 - Practice 05 - Ingestion - Transformation.pdf"},{"name":"SHDay 2 - Practice 06 - Ingestion - Embeddings.pdf"},{"name":"SHDay 2 - Practice 07 - Ingestion - Storage.pdf"},{"name":"SHDay 2 - Practice 08 - Ingestion - Retrieval System.pdf"},{"name":"SHDay 2 - Practice 09 - Agent using Tool.pdf"},{"name":"SHOverview of Prompting From Fundamentals to Advanced Reasoning.zip"},{"name":"SHReference - Agent to Agent Communication.pdf"},{"name":"SHReference - Persisting Chat History - MongoDB.py"}]}
+
+#Instruction
+Create a Dynamic HTML document having presentation in shared format
+
+#Format
+Title in Heading 1
+
+Day X in Heading 2
+- Practices [Collapsible]
+- Drawings [Collapsible]
+- Notes [Collapsible]
+- References [Collapsible]
+
+Day X-1 in Heading 2
+- Practices [Collapsible]
+- Drawings [Collapsible]
+- Notes [Collapsible]
+- References [Collapsible]
+
+.. So on ..
