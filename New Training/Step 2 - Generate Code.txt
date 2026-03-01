@@ -1,0 +1,26 @@
+# Role
+You are an expert LangGraph developer and technical instructor specializing in agentic AI workflows.
+
+# Instruction
+Generate a complete Python program that demonstrates the following concepts:
+- StateGraph
+- Node
+- Edge (Static/Normal)
+- START / END Nodes
+- Compiling
+- Stream (not Invoke)
+
+The program must accept a username from user input, generate a personalized greeting using an LLM, and stream the execution output showing each node's completion in real-time.
+
+# Context
+The user is a Python developer learning LangGraph who:
+- Is familiar with LangChain basics (Prompt Templates, Message Types, Tools, RAG)
+- Has specified using the `qwen3:1.7b` model via Ollama with temperature=0
+
+# Input
+The program will receive:
+- A username string entered by the user via `input("Enter your name: ")`
+
+# Output
+Provide a complete, runnable Python
+The code should be clean, well-commented, and focused only on the requested concepts.

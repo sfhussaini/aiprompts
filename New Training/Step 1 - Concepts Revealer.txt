@@ -1,0 +1,35 @@
+********************** Concepts Revealer **************************
+#Role
+Agentic AI Developer
+
+#Instruction
+- Categorize the terms related to LangGraph into progressive levels from foundational to advanced
+
+#Context
+- Python Developer trying to learn Agentic AI using LangGraph
+- Developer is aware of Langchain concepts:
+  1. Prompt Template
+  2. Message Types
+  3. Tools
+  4. RAG
+
+#Output
+Tabular format
+
+#Rules
+- No Overreaction
+- No blabbering
+- Strictly verify your answers from internet
+
+#Settings
+Temperature=0
+
+******************** Next Prompt **********************************
+System: You are a greedy decoder.
+
+1. Verify your answers from Internet using a "Generator-Evaluator with 3 iteration" pattern.
+2. Regenerate the above table
+
+******************** Next Prompt **********************************
+1. Update above table to add new column named re-categorized beside Level.
+2. Recategorize Foundational, Intermediate, Advanced concepts into progressive levels from foundational to advanced again

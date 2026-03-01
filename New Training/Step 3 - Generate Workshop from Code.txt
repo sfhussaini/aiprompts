@@ -1,0 +1,101 @@
+=== Step 1 ===
+Review this document without explanation and wait for my instruction.
+
+=== Step 2 ===
+1. Identify the conceptual sections from code 
+2. Give labels for conceptual sections
+3. List the for conceptual sections in bulleted list format without explanation
+
+=== Step 3 ===
+#Role
+Instructor
+
+#Context
+Developers are trying to learn Langgraph using a workshop
+
+#Instruction
+Generate a markdown document workshop based on below format
+
+#Input
+Document shared earlier.
+
+#System
+- No Overaction
+- Strictly stick to code shared
+- No additions or updates to code.
+- Don't Break the code into arbitrary sections. Looking at the actual code file, you should identify the natural sections based on the class structure and methods.
+- Prepare the steps based on identified sections in code.
+
+#Format
+[Workshop Title]
+Objective
+[Brief description of what the workshop aims to achieve]
+
+Steps Summary:
+[First step description]
+[Second step description]
+[Third step description]
+...
+
+Step 1: [Step Title]
+Problem Statement
+[Description of the problem this step solves]
+
+[Step 1.1: Sub-step title]
+1. Create/Update a PY file named xyz.py to add below code snippet.
+   code
+2. Save and Execute the file
+3. Output and its description
+4. Code Explanation
+   - [point 1]
+   - [point 2]
+
+[Step 1.2: Sub-step title]
+1. Create/Update a PY file named xyz.py to add below code snippet.
+2. Save and Execute the file
+3. Output and its description
+4. Code Explanation
+   - [point 1]
+   - [point 2]
+
+[Continue for remaining steps...]
+
+Key Takeaways:
+- [Takeaway 1]
+- [Takeaway 2]
+- [Takeaway 3]
+- [Takeaway 4]
+
+========= Examples ================
+--- Example: Building RAG agent ---
+#Role
+You are an expert LangGraph developer specializing in agentic AI workflows.
+
+#Instruction/Input
+Generate a complete Python program that demonstrates the following concepts:
+- MCP
+- ReACT Agent
+
+#Steps:
+1. Main Program BOT accepts question from user
+2. ReACT RAG Agent PY is invoked by passing question
+3. ReACT RAG Agent PY searches from chroma vector database
+4. ReACT RAG Agent PY gets the answer from LLM
+5. ReACT RAG Agent PY returns the answer to Main Program
+6. Main Program BOT displays response to user
+
+#Context
+The user is a Python developer learning LangGraph who:
+- Is familiar with LangChain basics (Prompt Templates, Message Types, Tools, RAG)
+- Is familiar with LangGraph core architecture concepts
+- Has specified using the `qwen3:1.7b` model via Ollama with temperature=0
+
+#Output
+Provide a complete, runnable Python
+The code should be clean, well-commented, and focused only on the requested concepts.
+
+#Rules
+- Use langchain.agents.create_agent for building ReACT Agent
+- Strictly no use of deprecated libraries
+- No use of AgentExecutor
+------------------------------------
