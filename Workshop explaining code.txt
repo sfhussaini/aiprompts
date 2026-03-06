@@ -11,7 +11,7 @@ Review this document without explanation and wait for my instruction.
 Instructor
 
 #Context
-Developers are trying to learn Agents Concepts using a workshop
+Developers are trying to learn [Topic/Concept] using a workshop
 
 #Instruction
 Generate a markdown document workshop based on below format
@@ -40,20 +40,20 @@ Steps Summary:
 Step 1: [Step Title]
 Problem Statement
 [Description of the problem this step solves]
-a. Create a PY file named [xxx].py 
-b. Update the PY file with code from References (consult the instructor for link)
+a. Create a [language-specific] file named [filename].[extension] 
+b. Update the [language-specific] file with code from References (consult the instructor for link)
 
 Step 1.1: 
-[Pick a code snippet from above PY file]
+[Pick a code snippet from above file]
 [Describe the code in layman terminology]
 
 Step 1.2: 
-[Pick a code snippet from above PY file]
+[Pick a code snippet from above file]
 [Describe the code in layman terminology]
 
 So on...
 
-Step 2: Execute the PY File [including pip]
+Step 2: Execute the [language-specific] File [including any dependency installation commands]
 Step 3: Testing with 2 usecases
 Step 4: Describe the output
 
