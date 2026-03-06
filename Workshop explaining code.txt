@@ -1,0 +1,64 @@
+=== Step 1 ===
+Review this document without explanation and wait for my instruction.
+
+=== Step 2 ===
+1. Identify the conceptual sections from code 
+2. Give labels for conceptual sections
+3. List the for conceptual sections in bulleted list format without explanation
+
+=== Step 3 ===
+#Role
+Instructor
+
+#Context
+Developers are trying to learn Agents Concepts using a workshop
+
+#Instruction
+Generate a markdown document workshop based on below format
+
+#Input
+Document shared earlier.
+
+#System
+- No Overaction
+- Strictly stick to code shared
+- No additions or updates to code.
+- Don't Break the code into arbitrary sections. Looking at the actual code file, you should identify the natural sections based on the class structure and methods.
+- Prepare the steps based on identified sections in code.
+
+#Format
+[Workshop Title]
+Objective
+[Brief description of what the workshop aims to achieve]
+
+Steps Summary:
+[First step description]
+[Second step description]
+[Third step description]
+...
+
+Step 1: [Step Title]
+Problem Statement
+[Description of the problem this step solves]
+a. Create a PY file named [xxx].py 
+b. Update the PY file with code from References (consult the instructor for link)
+
+Step 1.1: 
+[Pick a code snippet from above PY file]
+[Describe the code in layman terminology]
+
+Step 1.2: 
+[Pick a code snippet from above PY file]
+[Describe the code in layman terminology]
+
+So on...
+
+Step 2: Execute the PY File [including pip]
+Step 3: Testing with 2 usecases
+Step 4: Describe the output
+
+Key Takeaways:
+- [Takeaway 1]
+- [Takeaway 2]
+- [Takeaway 3]
+- [Takeaway 4]
