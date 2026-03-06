@@ -11,7 +11,7 @@ Review this document without explanation and wait for my instruction.
 Instructor
 
 #Context
-Developers are trying to learn Langgraph using a workshop
+Developers are trying to learn [Topic/Concept] using a workshop
 
 #Instruction
 Generate a markdown document workshop based on below format
@@ -26,41 +26,49 @@ Document shared earlier.
 - Don't Break the code into arbitrary sections. Looking at the actual code file, you should identify the natural sections based on the class structure and methods.
 - Prepare the steps based on identified sections in code.
 
-#Format
-[Workshop Title]
-Objective
+#Markdown Format
+---
+#[Workshop Title]
 [Brief description of what the workshop aims to achieve]
 
-Steps Summary:
-[First step description]
-[Second step description]
-[Third step description]
+##Steps Summary:
+1. [First step description]
+2. [Second step description]
+3. [Third step description]
 ...
 
-Step 1: [Step Title]
-Problem Statement
+##Step 1: [Step Title]
+###Problem Statement
 [Description of the problem this step solves]
+###Steps
+a. Create a [language-specific] file named [filename].[extension] 
+b. Update the [language-specific] file with code from References (consult the instructor for link)
 
-[Step 1.1: Sub-step title]
-1. Create/Update a PY file named xyz.py to add below code snippet.
-   code
-2. Save and Execute the file
-3. Output and its description
-4. Code Explanation
-   - [point 1]
-   - [point 2]
+###Step 1.1: [Strictly one code section title at a time. No use of 'and']
+[Pick section of code snippet from above file]
 
-[Step 1.2: Sub-step title]
-1. Create/Update a PY file named xyz.py to add below code snippet.
-2. Save and Execute the file
-3. Output and its description
-4. Code Explanation
-   - [point 1]
-   - [point 2]
+[Teach the code section title]
+[Describe the code in layman terminology]
+[Describe the code lines in a tabular format Line Numbers, Explanation]
 
-[Continue for remaining steps...]
+###Step 1.2: [Strictly one code section title at a time. No use of 'and']
+[Pick section of code snippet from above file]
 
-Key Takeaways:
+[Teach the code section title].
+[Describe the code in layman terminology].
+[Describe the code lines in a tabular format Line Numbers, Explanation]
+
+So on...
+
+##Step 2: Execute 
+Execute the [language-specific] File [including any dependency installation commands]
+
+##Step 3: Testing
+Testing with 2 usecase
+
+##Step 4: Describe the output
+
+##Key Takeaways:
 - [Takeaway 1]
 - [Takeaway 2]
 - [Takeaway 3]
