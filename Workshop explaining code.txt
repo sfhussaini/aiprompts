@@ -25,6 +25,8 @@ Document shared earlier.
 - No additions or updates to code.
 - Don't Break the code into arbitrary sections. Looking at the actual code file, you should identify the natural sections based on the class structure and methods.
 - Prepare the steps based on identified sections in code.
+- Strictly Don't use Line numbers for explanation, instead use code snippet with ellipse
+- Ignore the comments and focus on code explanation.
 
 #Markdown Format
 ---
