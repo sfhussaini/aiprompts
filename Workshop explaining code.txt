@@ -27,6 +27,7 @@ Document shared earlier.
 - Prepare the steps based on identified sections in code.
 - Don't use Line numbers for explanation, instead use code snippet with ellipse
 - Ignore the comments and focus on code explanation.
+- "Why is this done" should be atleast 10 words.
 
 #Markdown Format
 ---
