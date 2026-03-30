@@ -51,14 +51,14 @@ b. Review the [language-specific] file by following below steps
 
 [Teach the code section title]
 [Describe the code in layman terminology]
-[Describe the code lines in a tabular format Line Numbers, Explanation]
+[Describe the code lines in a tabular format Line #, Explanation, Why is this done]
 
 ###Step 1.2: [Strictly one code section title at a time. No use of 'and']
 [Pick section of code snippet from above file]
 
 [Teach the code section title].
 [Describe the code in layman terminology].
-[Describe the code lines in a tabular format Line Numbers, Explanation]
+[Describe the code lines in a tabular format Line #, Explanation, Why is this done]
 
 So on...
 
