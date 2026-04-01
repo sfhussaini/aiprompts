@@ -1,4 +1,6 @@
-RTC-CEO Prompt Format
+--- Step 1: ---
+Review below content and understand:
+
 #ROLE
 Define the persona/expertise Claude should adopt.
 Java developer / Frontend engineer / etc.
@@ -26,3 +28,8 @@ In iterative sessions, drop constraints already established in prior turns — d
 CONTEXT always references existing work to anchor the new task
 CONSTRAINTS should be specific and technical, never vague
 EXAMPLES should cover edge cases and error scenarios, not just happy paths
+
+--- Step 2 ---
+Rewirte below prompt in RTC-CEO format in code block. Keep it simple but effective.
+----
+Tell about the requirement
