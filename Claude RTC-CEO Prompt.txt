@@ -1,0 +1,28 @@
+RTC-CEO Prompt Format
+#ROLE
+Define the persona/expertise Claude should adopt.
+Java developer / Frontend engineer / etc.
+
+#TASK
+A concise, action-oriented statement of what needs to be done.
+Create / Add / Modify / Replace / Build...
+
+#CONTEXT
+Bullet points (*) describing the current state and relevant background.
+
+#CONSTRAINTS
+Bullet points (*) with specific technical rules, restrictions, and requirements.
+
+#EXAMPLES
+Concrete input/output pairs to anchor expected behavior.
+Input: ... → Output: ...
+
+#OUTPUT
+The exact deliverable — what file(s) to produce and what they must contain.
+Complete UserService.java with registerUser and getAllUsers methods
+
+Usage rules:
+In iterative sessions, drop constraints already established in prior turns — don't repeat what's already in context
+CONTEXT always references existing work to anchor the new task
+CONSTRAINTS should be specific and technical, never vague
+EXAMPLES should cover edge cases and error scenarios, not just happy paths
