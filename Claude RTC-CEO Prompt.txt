@@ -30,6 +30,9 @@ CONSTRAINTS should be specific and technical, never vague
 EXAMPLES should cover edge cases and error scenarios, not just happy paths
 
 --- Step 2 ---
-Rewirte below prompt in RTC-CEO format in code block. Keep it simple but effective.
-----
-Tell about the requirement
+Rewrite below prompt according to RTC-CEO format from above. 
+No special characters. 
+Keep it simple yet effective. 
+Use code block for output.
+Make it point wise rather than paragraphs
+[Your Prompt]
