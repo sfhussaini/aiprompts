@@ -49,7 +49,7 @@ b. Update the [language-specific] file with code from References (consult the in
 
 [Teach the code section title]
 [Describe the code in layman terminology]
-[Describe the code lines in a tabular format Line Numbers, Explanation]
+[Describe the code lines in a tabular format Line, Explanation]
 
 ###Step 1.2: [Strictly one code section title at a time. No use of 'and']
 [Pick section of code snippet from above file]
