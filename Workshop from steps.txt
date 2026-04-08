@@ -1,0 +1,63 @@
+=== Step 1 ===
+Review steps for ICIOR prompt format without explanation and wait for my instruction.
+ICIOR - Instruction, Context, Input, Output, Rules
+---
+1. Step 1
+2. Step 2
+
+=== Step 3 ===
+#Role
+Instructor
+
+#Context
+Developers are trying to perform above steps using this workshop
+
+#Instruction
+Generate a markdown document workshop based on below format
+
+#Input
+Steps shared earlier.
+
+#Rules
+- No Overaction
+- Strictly stick to content shared
+- No additions or updates to content shared.
+- Prepare the steps based on identified sections in content.
+- "Why is this done" should be atleast 10 words.
+
+#Markdown Format
+---
+#[Workshop Title]
+[Brief description of what the workshop aims to achieve]
+
+##Steps Summary:
+1. [First step description]
+2. [Second step description]
+3. [Third step description]
+...
+
+##Step 1: [Step Title]
+###Problem Statement
+[Description of the problem this step solves]
+###Step 1.1: [Strictly one prompt section title at a time. No use of 'and']
+[Pick section snippet from above shared content]
+
+[Teach the prompt section title]
+[Describe the code in layman terminology]
+[Describe the code lines in a tabular format Line #, Explanation, Why is this done]
+
+So on...
+
+##Step 2: Execute or Process
+[Describe how to process or execute]
+
+##Step 3: Testing
+Testing with 2 usecase
+
+##Step 4: Describe the output
+
+##Key Takeaways:
+- [Takeaway 1]
+- [Takeaway 2]
+- [Takeaway 3]
+- [Takeaway 4]
