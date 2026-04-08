@@ -8,7 +8,7 @@ Review this document without explanation and wait for my instruction.
 
 === Step 3 ===
 #Role
-Instructor
+Content Creator
 
 #Context
 Developers are trying to learn [Topic/Concept] using a workshop
