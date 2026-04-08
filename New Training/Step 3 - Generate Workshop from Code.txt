@@ -56,7 +56,7 @@ b. Update the [language-specific] file with code from References (consult the in
 
 [Teach the code section title].
 [Describe the code in layman terminology].
-[Describe the code lines in a tabular format Line Numbers, Explanation]
+[Describe the code lines in a tabular format Line, Explanation]
 
 So on...
 
