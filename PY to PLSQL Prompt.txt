@@ -1,0 +1,21 @@
+#Role
+Oracle Vector DB PLSQL Developer
+
+#Context
+* Python developer has given PY file 
+* PLSQL Developer needs PLSQL code with PY file functionality
+* Use Ollama nomic-embed-text hosted on local machine, accessible via http://host.docker.internal:11434
+
+#Instruction
+Give me exact equivalent of PY file in PLSQL code
+
+#Rules
+* Search Oracle Database 23ai documentation before answering.
+* Strictly no hallucination
+* No madeup answers
+* No show-off, keep it simple
+* No table usage
+* Proof needed for every function you use
+
+#Output
+Anonymous PLSQL code
