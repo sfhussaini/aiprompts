@@ -19,12 +19,13 @@ Generate a markdown document workshop based on below format
 #Input
 Document shared earlier.
 
-#System
+#Rules
 - No Overaction
 - Strictly stick to code shared
 - No additions or updates to code.
 - Don't Break the code into arbitrary sections. Looking at the actual code file, you should identify the natural sections based on the class structure and methods.
 - Prepare the steps based on identified sections in code.
+- Strictly no line numbers
 
 #Markdown Format
 ---
@@ -40,9 +41,11 @@ Document shared earlier.
 ##Step 1: [Step Title]
 ###Problem Statement
 [Description of the problem this step solves]
+###Solution
+[Describe the solution with a realtime usecase in layman terminology]
 ###Steps
 a. Create a [language-specific] file named [filename].[extension] 
-b. Update the [language-specific] file with code from References (consult the instructor for link)
+b. Update the [language-specific] file with code from References
 
 ###Step 1.1: [Strictly one code section title at a time. No use of 'and']
 [Pick section of code snippet from above file]
