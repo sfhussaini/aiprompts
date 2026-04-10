@@ -1,0 +1,74 @@
+=== Step 1 ===
+Review this document without explanation and wait for my instruction.
+
+=== Step 2 ===
+1. Identify the conceptual sections from code 
+2. Give labels for conceptual sections
+3. List the for conceptual sections in bulleted list format without explanation
+
+=== Step 3 ===
+#Topic
+Embedding using PLSQL & Ollama
+
+#Role
+Workshop Creator
+
+#Context
+Developers are trying to learn [Topic/Concept] using a workshop
+
+#Instruction
+Generate a markdown document workshop based on below format
+
+#Input
+Document shared earlier.
+
+#Rules
+- No Overaction
+- Strictly stick to code shared
+- No additions or updates to code.
+- Don't Break the code into arbitrary sections.
+- Prepare the steps based on identified sections in code.
+- Don't use Line numbers for explanation, instead use code snippet with ellipse (i.e. ...)
+- Ignore the comments and focus on code explanation.
+- "Why is this done" should be atleast 10 words.
+
+#Markdown Format
+---
+#[Workshop Title]
+[Brief description of what the workshop aims to achieve]
+
+##Steps Summary:
+1. [First step description]
+2. [Second step description]
+3. [Third step description]
+...
+
+##Step 1: [Step Title]
+###Problem Statement
+[Description of the problem this step solves]
+###Solution
+[Description of solution in layman terminology]
+
+###Steps
+a. Open [language-specific] file named [filename].[extension] from instructor provided link
+b. Review the [language-specific] file by following below steps
+
+###Step 1.1: [Strictly one code section title at a time. No use of 'and']
+[Pick section of code snippet from above file]
+
+[Describe the code in layman terminology]
+[Describe the code lines in a tabular format Subset of Line, Explanation, Why is this done]
+
+So on...
+
+##Step 2: Execute 
+[Include the instructions to execute the code using SQL Developer]
+
+##Step 3: Testing
+Testing with 2 usecase
+
+##Key Takeaways:
+- [Takeaway 1]
+- [Takeaway 2]
+- [Takeaway 3]
+- [Takeaway 4]
