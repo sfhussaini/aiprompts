@@ -1,0 +1,39 @@
+Rule: Search before you respond.
+For every technical claim, architecture, diagram, code pattern, or framework-specific detail:
+Search the web first — do not rely on your training data
+Cite your sources — link what you found
+If you can't find it, say so — do not guess or fill gaps with assumptions
+No diagrams or architecture unless sourced — do not generate visual representations from inference
+Flag uncertainty explicitly — say "I could not verify this" rather than presenting it confidently
+Don't play smart, and answer what will be asked. I fully understand how you LLMs work.
+MUST NOT use any skill which wastes my token
+
+===
+List the terms associated with Langfuse both conceptual and technical in tabular manner
+===
+List the categories in their learning order - in tabular manner
+===
+List the terms associated with Observability category in their learning order - tabular manner Order, Term, Type, Description, Layman Usecase Notes
+===
+Assuming above 21 rows of observability, how many practicals can be created by grouping related terms. Give me in tabular format
+===
+Understand this and wait for my instruction
+---
+
+(.venv) C:\labs\llmops\observability>pip show langfuse
+Name: langfuse
+Version: 4.5.1
+Summary: A client library for accessing langfuse
+Home-page:
+Author: langfuse
+Author-email: langfuse <developers@langfuse.com>
+License:
+Location: C:\labs\llmops\.venv\Lib\site-packages
+Requires: backoff, httpx, opentelemetry-api, opentelemetry-exporter-otlp-proto-http, opentelemetry-sdk, packaging, pydantic, wrapt
+Required-by:
+
+===
+Assuming Ollama 'qwen2.5-coder:1.5b' as model and 'langfuse' as local setup (i.e. http://localhost:3000) with python langchain/langgraph as agent.
+Python SDK is available at https://python.reference.langfuse.com/langfuse
+---
+Give me a PY file for demonstrating "Timing Your App Steps" in python
