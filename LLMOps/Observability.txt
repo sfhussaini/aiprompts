@@ -1,0 +1,85 @@
+Understand below and wait for my instruction
+---
+Search before you respond.
+For every technical claim, architecture, diagram, code pattern, or framework-specific detail:
+
+Search the web first — do not rely on your training data
+Cite your sources — link what you found
+If you can't find it, say so — do not guess or fill gaps with assumptions
+No diagrams or architecture unless sourced — do not generate visual representations from inference
+Flag uncertainty explicitly — say "I could not verify this" rather than presenting it confidently
+Don't play smart, and answer what will be asked.
+
+=================================================
+
+Understand this and wait for my instruction
+---
+Order	Term	Type	Description	Layman Usecase / Notes
+1	Trace	Core Concept	Container for a single end-to-end request lifecycle. Holds all child observations. Attributes like user_id, session_id, tags, metadata live here and propagate down.	User asks a chatbot a question → that entire interaction from input to final response = 1 trace
+2	Observation	Core Concept	Any individual step recorded inside a trace. Parent concept for all specific types below. Can be nested.	Every sub-step inside that chatbot response (retrieval, LLM call, post-processing) = individual observations
+3	Span	Observation Type	Default observation type. Represents the duration of any unit of work that isn't an LLM call. Maps to an OTel Span.	"How long did my document parser take?" — wrap it in a span
+4	Generation	Observation Type	Specialized span for LLM calls. Captures prompt, completion, model name, token counts, and cost. Most common type you'll use.	Every gpt-4o or claude call in your app is logged as a generation
+5	Event	Observation Type	Point-in-time observation with no duration. Marks that something happened at a moment.	"User clicked retry" or "cache hit occurred" — no start/end, just a timestamp
+6	Session	Grouping Concept	Groups multiple traces belonging to the same user interaction over time. Used for multi-turn conversations.	A user's entire chat thread across 10 back-and-forth messages = 1 session containing 10 traces
+7	Environment	Attribute	Labels a trace as belonging to production, staging, or development. Keeps test data separate from real data.	Run your tests in development so they don't pollute your production dashboards
+8	user_id	Attribute	Associates a trace with a specific end user. Enables per-user filtering and cost tracking.	"Show me all traces from user john@acme.com this week"
+9	session_id	Attribute	Links a trace to a session. The join key between trace and session.	Set the same session_id on all traces in a conversation thread to group them
+10	Tags	Attribute	Free-form string labels on traces/observations. Used for business-level filtering and segmentation.	Tag traces with "rag", "tool-use", "failed" to slice and dice in the dashboard
+11	Metadata	Attribute	Arbitrary key-value pairs attached to traces or observations for custom context not covered by standard fields.	Store {"pipeline_version": "v3", "customer_tier": "enterprise"} alongside a trace
+12	Retriever	Observation Type	Observation type for a RAG retrieval step — fetching relevant documents from a vector store or corpus.	"Which documents were pulled to answer this question?" — logged as a retriever observation
+13	Embedding	Observation Type	Observation type for calls that generate vector embeddings. Captures model, token usage, and cost.	Logging your text-embedding-3-small call that turns a user query into a vector
+14	Chain	Observation Type	Observation type representing a link between steps — passing output of one step as input to the next.	Retriever output → formatted into prompt → sent to LLM — the handoff between these is a chain
+15	Tool	Observation Type	Observation type for tool/function calls made by agents (e.g., web search, calculator, API call).	Agent decides to call search_web("latest AI news") — that call is logged as a tool observation
+16	Agent	Observation Type	Observation type for multi-step AI agent workflows with autonomous decision-making and tool orchestration.	An agent that plans, calls 3 tools, and synthesizes an answer — the whole agent loop = 1 agent observation
+17	Guardrail	Observation Type	Observation type for safety/moderation components that check inputs or outputs for harmful content.	PII detector or jailbreak filter running before/after your LLM call = a guardrail observation
+18	Evaluator	Observation Type	Observation type for quality-assessment functions running inline — checking relevance, correctness, helpfulness.	A scoring function that runs right after your LLM responds and grades the answer = evaluator observation
+19	Agent Graph	UI / Visualization	Visual graph view in Langfuse UI showing the flow of observations within a trace for complex agent workflows.	See your agent's decision tree visually — which tools it called, in what order, what failed
+20	Log View	UI / Visualization	UI view that shows all observations concatenated sequentially. Good for quick linear scanning.	Scroll through all steps of a trace like reading a log file — simpler alternative to the graph view
+21	Custom Dashboards	UI / Analytics	Self-service dashboards to visualize aggregated metrics — token usage, latency, cost, quality scores — with custom filters.	Build a dashboard showing "average latency by model" or "daily cost by user segment"
+
+=================================================
+
+Understand this and wait for my instruction
+---
+#	Practical Title	Terms Covered (Row #s)	Terms
+1	Your First Trace	1, 2	Trace, Observation
+2	Timing Your App Steps	1, 2, 3, 5	Trace, Observation, Span, Event
+3	Logging Your First LLM Call	1, 2, 3, 4	Trace, Observation, Span, Generation
+4	Tracking a Multi-Turn Conversation	1, 6, 8, 9	Trace, Session, user_id, session_id
+5	Organizing Traces with Attributes	7, 10, 11	Environment, Tags, Metadata
+6	Tracing a RAG Pipeline	2, 12, 13, 14, 4	Observation, Retriever, Embedding, Chain, Generation
+7	Tracing an Agent with Tool Calls	15, 16, 2, 4	Tool, Agent, Observation, Generation
+8	Adding Safety Layers to Traces	17, 18	Guardrail, Evaluator
+9	Visualizing and Navigating Traces	19, 20	Agent Graph, Log View
+10	Building a Monitoring Dashboard	21, 7, 10, 11	Custom Dashboards, Environment, Tags, Metadata
+
+=================================================
+
+Understand this and wait for my instruction
+---
+
+(.venv) C:\labs\llmops\observability>pip show langfuse
+Name: langfuse
+Version: 4.5.1
+Summary: A client library for accessing langfuse
+Home-page:
+Author: langfuse
+Author-email: langfuse <developers@langfuse.com>
+License:
+Location: C:\labs\llmops\.venv\Lib\site-packages
+Requires: backoff, httpx, opentelemetry-api, opentelemetry-exporter-otlp-proto-http, opentelemetry-sdk, packaging, pydantic, wrapt
+Required-by:
+
+=================================================
+
+- MUST Use Ollama qwen2.5-coder:1.5b model as LLM
+- 'langfuse' as local setup (i.e. http://localhost:3000) with python langchain/langgraph as agent.
+- Python SDK is available at https://python.reference.langfuse.com/langfuse
+- Avoid using 'Term x', instead use the clear term name.
+- Use os.environ[...] approach
+- Add shared by 'Syed Fazal' in documentation
+- Use llm-guard library
+---
+Give me a PY file for demonstrating "Adding Safety Layers to Traces" in python
+
+=================================================
