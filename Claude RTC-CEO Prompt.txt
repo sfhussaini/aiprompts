@@ -9,8 +9,19 @@ Java developer / Frontend engineer / etc.
 A concise, action-oriented statement of what needs to be done.
 Create / Add / Modify / Replace / Build...
 
+#INPUT
+The specific data, code, files, or parameters to operate on.
+* Variable/parameter name: type — description
+* Variable/parameter name: type — description
+
 #CONTEXT
 Bullet points (*) describing the current state and relevant background.
+
+#STEPS
+Ordered sequence of actions to execute.
+1. First action with specific criteria
+2. Second action with specific criteria
+3. Third action with specific criteria
 
 #CONSTRAINTS
 Bullet points (*) with specific technical rules, restrictions, and requirements.
@@ -28,6 +39,8 @@ In iterative sessions, drop constraints already established in prior turns — d
 CONTEXT always references existing work to anchor the new task
 CONSTRAINTS should be specific and technical, never vague
 EXAMPLES should cover edge cases and error scenarios, not just happy paths
+INPUT defines the exact data/code to operate on — never leave ambiguous what's being modified
+STEPS provides sequential, actionable instructions — each step must be verifiable
 
 --- Step 2 ---
 Rewrite below prompt according to RTC-CEO format from above. 
