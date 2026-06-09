@@ -1,0 +1,64 @@
+Understand below format
+---
+# ROLE
+Define the persona/expertise to be adopted.
+Java developer / Frontend engineer / etc.
+
+# TASK
+A concise, action-oriented statement of what needs to be done.
+Create / Add / Modify / Replace / Build...
+
+## INPUT
+The specific data, code, files, or parameters to operate on.
+* `Variable/parameter name`: `type` — description
+* `Variable/parameter name`: `type` — description
+* `QA Threshold`: `float` — minimum score (0.0–1.0) required to pass validation (default: 1.0)
+
+## STEPS
+Ordered sequence of actions to execute.
+1. First action with specific criteria
+2. Second action with specific criteria
+3. Third action with specific criteria
+
+# CONTEXT
+Bullet points (*) describing the current state and relevant background.
+
+# CONSTRAINTS
+Bullet points (*) with specific technical rules, restrictions, and requirements.
+
+# EXAMPLES
+Concrete input/output pairs to anchor expected behavior.
+Input: ... → Output: ...
+
+# OUTPUT
+The exact deliverable — what file(s) to produce and what they must contain.
+---
+
+# QA (Internal — do not include in final output)
+
+Validate the generated output against all sections above. Score each criterion as **PASS (1)** or **FAIL (0)** , then compute the overall score.
+
+## Scoring Criteria
+| # | Section | Check |
+|---|---------|-------|
+| 1 | ROLE | Does the output reflect the specified persona/expertise? |
+| 2 | TASK | Does the output fulfill the stated action verb? |
+| 3 | INPUT | Are all specified inputs consumed and correctly typed? |
+| 4 | STEPS | Is each step addressed in the output? |
+| 5 | CONTEXT | Is the output consistent with the current state/background? |
+| 6 | CONSTRAINTS | Are all technical rules and restrictions satisfied? |
+| 7 | EXAMPLES | Does behavior match provided input/output pairs (including edge cases)? |
+| 8 | OUTPUT | Does the deliverable match the exact specification (files, contents)? |
+
+## Score Calculation
+```
+Score = (Sum of PASS criteria) / 8
+```
+- **0.0** = Total failure — output meets none of the criteria
+- **1.0** = Perfect adherence — output meets all criteria
+
+## Pass/Fail Decision
+```
+IF Score >= QA Threshold → PASS (deliver output)
+IF Score < QA Threshold  → FAIL (regenerate with corrections, max 3 attempts)
+```
