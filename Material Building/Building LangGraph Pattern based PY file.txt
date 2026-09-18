@@ -1,0 +1,5 @@
+Give me a step by step python program using langgraph demonstrating 'Supervisor' using create_agent & create_supervisor
+Use Ollama model qwen3:1.7b model. 
+Use RISCOR prompt for Agent Identity and Task (Role, Instruction, Steps, Context, Output, Rules), Instruction is the task given as User Prompt, and RSCOR is for defining identity. 
+Take a realtime Banking usecase. 
+Ensure agent code uses LLM, RISCOR Prompt, Tools, Memory.
