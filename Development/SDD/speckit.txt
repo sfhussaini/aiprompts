@@ -1,0 +1,386 @@
+Now understand this framework and wait for my further instruction
+Here is the **complete consolidated context** for you to use.
+---
+
+# 📋 SPECKIT Framework - Complete Context Documentation
+
+## Version Information
+- **Speckit Version**: 1.0.10
+- **Framework Type**: AI-powered iterative development workflow engine
+- **AI Platform**: KiloCode AI (integration v1.0.10)
+- **Scripting Language**: Python 3.11+ (primary), with PowerShell support
+
+---
+
+## 🏗️ Core Architecture
+
+### Directory Structure
+```
+demonstrating-ai-systems/
+├── .kilo/                    # Workflow definitions
+│   └── commands/                 # Individual workflow specs (*.md)
+│       ├── speckit.specify.md     # Feature specification generation
+│       ├── speckit.plan.md        # Implementation planning
+│       ├── speckit.tasks.md       # Task breakdown
+│       ├── speckit.checklist.md   # Quality checklist generation
+│       ├── speckit.clarify.md     # Requirement clarification
+│       ├── speckit.implement.md   # Feature implementation
+│       └── speckit.analyze.md     # Codebase analysis
+├── .specify/                       # Specification framework
+│   ├── integrations/              # Tool integration configs
+│   │   ├── kilo.manifest.json
+│   │   └── speckit.manifest.json
+│   ├── memory/                    # Runtime memory (constitutions)
+│   │   └── constitution.md        # Authoritative project principles
+│   ├── templates/                 # Workflow artifact templates
+│   │   ├── checklist.template.md
+│   │   ├── constitution-template.md
+│   │   ├── plan-template.md
+│   │   ├── spec-template.md
+│   │   └── tasks-template.md
+│   └── workflows/                 # Workflow registry
+└── specs/                         # Feature specifications (generated)
+    └── [N-feature-name]/          # Sequential numbered feature dirs
+        ├── spec.md
+        └── [N-branch]            # Git branch for feature
+```
+
+---
+
+## 🔄 Development Workflow Chain
+
+The Speckit system follows this progression for each feature:
+
+### Full Workflow Chain
+```
+User Request → /speckit.specify → Review spec → /speckit.plan → 
+Research (Phase 0) → Design (Phase 1) → /speckit.tasks → 
+/speckit.checklist → /speckit.implement → Final review
+```
+
+### Alternative Paths
+
+**Clarification-First Path:**
+```
+User Request → /speckit.specify → /speckit.clarify (max 3 clarifications) → 
+Updated spec → Review → Continue to planning phase
+```
+
+**Codebase Analysis Path:**
+```
+User Request → /speckit.analyze → Findings report → Follow-up actions
+```
+
+---
+
+## 📦 Core Workflow Commands
+
+### `/speckit.specify` - Feature Specification Generation
+- **Purpose**: Create or update feature specification from natural language description
+- **Output**: `specs/[N-feature-name]/spec.md`
+- **Key Sections**:
+  - User Scenarios & Testing (mandatory, prioritized P1/P2/P3)
+  - Requirements (functional requirements FR-XXX)
+  - Success Criteria (measurable, technology-agnostic)
+  - Edge Cases
+  - Assumptions
+
+**Important Rules:**
+- **Maximum 3 `[NEEDS CLARIFICATION]]` markers** - only for critical decisions lacking defaults
+- **Priority order**: scope > security/privacy > user experience > technical details
+- **Common reasonable defaults** (don't ask about these): data retention, performance targets, error handling, authentication method (OAuth2/session-based), integration patterns
+
+### `/speckit.plan` - Implementation Planning
+- **Purpose**: Execute planning workflow with research and design artifacts
+- **Phases**:
+  - **Phase 0 (Outline & Research)**: Generate `research.md` resolving all NEEDS CLARIFICATION
+  - **Phase 1 (Design & Contracts)**: Generate `data-model.md`, `/contracts/*`, `quickstart.md`
+
+**Output Artifacts:**
+- `plan.md` - Technical implementation plan
+- `research.md` - Technology decisions and alternatives
+- `data-model.md` - Entity definitions and relationships
+- `/contracts/` - Interface specifications
+- `quickstart.md` - Validation guide for testing
+
+### `/speckit.tasks` - Task Breakdown
+- **Purpose**: Generate actionable, dependency-ordered tasks from design artifacts
+- **Input**: plan.md, spec.md, data-model.md, contracts/, research.md, quickstart.md
+- **Output**: `tasks.md`
+
+**Task Format (REQUIRED):**
+```
+- [ ] T001 [P?] [Story?] Description with file path
+```
+
+**Components:**
+- Checkbox: Always `- [ ]`
+- Task ID: Sequential (T001, T002, T003...)
+- [P] marker: Only if parallelizable (different files, no dependencies)
+- [Story] label: Required for user story phases ([US1], [US2], etc.)
+- Description: Clear action with exact file path
+
+**Phase Structure:**
+- Phase 1: Setup (project initialization)
+- Phase 2: Foundational (blocking prerequisites - MUST complete before user stories)
+- Phase 3+: User Stories in priority order (P1, P2, P3...)
+  - Within each story: Tests → Models → Services → Endpoints → Integration
+- Final Phase: Polish & Cross-Cutting Concerns
+
+### `/speckit.checklist` - Quality Checklist Generation
+- **Purpose**: Generate custom checklist for requirements quality validation
+- **Concept**: Checklists are "UNIT TESTS FOR REQUIREMENTS WRITING"
+- **What they validate**: Completeness, clarity, consistency, coverage of requirements
+- **NOT for**: Testing implementation/verification ("Verify button clicks" ❌)
+
+### `/speckit.clarify` - Requirement Clarification
+- **Purpose**: Identify underspecified areas and ask targeted questions (max 5)
+- **Expected to run BEFORE** invoking `/speckit.plan`
+- Records clarifications directly in spec file
+
+### `/speckit.implement` - Feature Implementation
+- **Purpose**: Execute implementation plan by processing all tasks in tasks.md
+- **Progress tracking**: Mark completed tasks as `[X]`
+- **Validation**: Verify against specification, plan, and test coverage
+- **Handles**: Parallel tasks ([P]), error reporting, completion validation
+
+### `/speckit.analyze` - Codebase Analysis
+- **Purpose**: Non-destructive cross-artifact consistency analysis
+- **Scope**: spec.md, plan.md, tasks.md after task generation
+- **Output**: Structured analysis report (read-only)
+- **Detects**: Inconsistencies, duplications, ambiguities, underspecified items
+- **Critical**: Constitution violations are always CRITICAL
+
+---
+
+## 📜 Constitution-Driven Development
+
+### Runtime Memory (`/.specify/memory/`)
+```
+memory/
+├── constitution.md           # Current constitution (runtime snapshot)
+└── [constitutions/]          # Historical versions
+```
+
+**Constitution Template Structure:**
+- Core Principles section
+- Additional constraints, security requirements, performance standards
+- Development workflow, review process, quality gates
+- Governance rules with version tracking
+
+### Active Constitution Example: AI-Powered Personal Budget Assistant (v1.0.0)
+**Core Principles:**
+1. **Privacy-First Financial Data Handling**: Encrypt all data, never store CVV/PIN/full card numbers
+2. **Clarity in Categorization**: Clear labels, user confirmation when uncertain
+3. **User-Controlled Budgeting**: Full visibility and control over budget limits
+4. **Educational (Not Financial Planning)**: Insights only, no investment/wealth management advice
+5. **Real-Time Transaction Monitoring**: Detect unusual spending patterns immediately
+6. **Data Security & Compliance**: PCI-DSS, GDPR/CCPA compliance
+7. **Transparency in AI Decisions**: Explain reasoning for recommendations
+
+---
+
+## 🔧 Extension Hook System
+
+**Configuration File**: `.specify/extensions.yml`
+
+**Hook Structure:**
+```yaml
+hooks.before_specify:
+  - extension: speckit.git.branch
+    command: speckit.git-branch
+    optional: true           # Won't block workflow
+    description: Create feature branch
+
+hooks.after_constitution:
+  - extension: sync.notify
+    command: sync-notify
+    optional: true           # Notification after constitution update
+```
+
+**Hook Rules:**
+- Hooks without `condition` field are executable (unless explicitly `enabled: false`)
+- Non-empty `condition` values skip execution (leave to HookExecutor)
+- Dotted command names convert to hyphens: `speckit.git.commit` → `/speckit.git-commit`
+- **DO NOT** interpret or evaluate hook `condition` expressions
+
+---
+
+## 📝 Template System
+
+All workflow outputs use predefined templates with placeholders:
+
+### Templates Location: `.specify/templates/`
+1. `checklist-template.md` - Custom checklist structure
+2. `constitution-template.md` - Project principles template
+3. `plan-template.md` - Implementation plan template
+4. `spec-template.md` - Feature specification template
+5. `tasks-template.md` - Task list template
+
+### Key Template Guidelines:
+- Placeholders use `<!-- -->` style comments
+- Workflow replaces placeholders during generation
+- Templates should never be modified by workflows (protected)
+- Use absolute paths for filesystem operations in generated docs
+
+---
+
+## ⚙️ Configuration Files
+
+### `.specify/init-options.json`
+```json
+{
+  "ai": "kilo",
+  "feature_numbering": "sequential",
+  "here": false,
+  "integration": "kilo",
+  "script": "py",
+  "speckit_version": "1.0.10"
+}
+```
+
+### `.specify/integration.json`
+```json
+{
+  "version": "1.0.10",
+  "integration_state_schema": 1,
+  "installed_integrations": ["kilo"],
+  "integration_settings": {
+    "kilo": {
+      "script": "py",
+      "invoke_separator": "-"
+    }
+  },
+  "integration": "kilo",
+  "default_integration": "kilo"
+}
+```
+
+### Integration Manifests (`.specify/integrations/`)
+- `kilo.manifest.json` - Tracks KiloCode workflow files with hashes
+- `speckit.manifest.json` - Tracks Speckit scripts and templates with hashes
+
+---
+
+## 🚦 Technical Constraints & Rules
+
+### Constraint 1: Maximum Clarifications (3 markers)
+- `[NEEDS CLARIFICATION]` only for critical decisions lacking any reasonable default
+- **Impact priority**: scope > security/privacy > UX > technical details
+
+### Constraint 2: Constitution Compliance
+- Gate before Phase 0 research (mandatory)
+- Re-check after Phase 1 design
+- Violations require justification in complexity tracking table
+
+### Constraint 3: Sequential Numbering
+- Features use sequential numbers (1, 2, 3...) not semantic versions
+- Directory structure: `specs/1-feature-name/`
+
+### Constraint 4: Documentation-First Approach
+- All artifacts generated before implementation (in demo mode)
+- Phase 0 → research.md
+- Phase 1 → data-model.md, /contracts/*, quickstart.md
+
+---
+
+## 🛠️ Scripts & Utilities
+
+### Python Scripts (`.specify/scripts/python/`)
+- `check_prerequisites.py` - Prerequisite validation
+- `common.py` - Shared utilities
+- `create_new_feature.py` - New feature creation
+- `resolve_template.py` - Template resolution
+- `setup_plan.py` - Plan setup
+- `setup_tasks.py` - Task setup
+
+### PowerShell Scripts (`.specify/scripts/powershell/`)
+- Parallel equivalents to Python scripts for Windows environments
+
+---
+
+## 📊 Platform Support
+
+| Platform | Status | Notes |
+|----------|--------|-------|
+| Windows | ✅ Supported | Current demo environment |
+| Linux | ✅ Compatible | Standard Python/Git tools |
+| macOS | ✅ Compatible | Standard Python/Git tools |
+
+---
+
+## 🔍 Known Issues & Limitations
+
+1. **Extension Hook Evaluation**: Hook `condition` expressions not interpreted by core workflow (leave empty/null for automatic execution)
+2. **Template File Protection**: Templates should never be modified by workflows (workflows modify only runtime files in `.specify/memory/`, `specs/`, `plans/`)
+
+---
+
+## 📈 Performance Considerations
+
+- Complete Phase 0 research before Phase 1 design (don't skip research)
+- Limit clarification requests to max 3
+- Accept documentation overhead for demo mode; production may combine phases
+
+---
+
+## 💡 Key Design Patterns in Use
+
+1. **Template Pattern**: Pre-defined artifact structures with placeholders
+2. **Hook Pattern**: Optional/mandatory workflow extensions via YAML config
+3. **Gate Pattern**: Constitution checks before and after planning phases
+4. **Two-Phase Commit**: Research → Design separation in planning workflow
+5. **Constitutional Programming**: Principles encoded as enforceable rules
+
+---
+
+## 🎯 User Experience Goals
+
+1. **Clarity Over Speed**: Users always know WHAT, WHY, and HOW to validate
+2. **Empowerment Through Documentation**: Every artifact answers "why" before "how"
+3. **Confidence in AI Decisions**: Informed guesses documented with assumptions
+4. **Quality Assurance Built-In**: Each phase has quality gates
+
+---
+
+## ✅ Success Metrics
+
+1. **Documentation Coverage**: Every feature produces all relevant artifacts
+2. **Decision Transparency**: All technology choices documented with alternatives
+3. **Specification Quality**: Requirements unambiguous and measurable
+4. **User Satisfaction**: Stakeholders feel informed throughout the process
+5. **Code Consistency**: Features follow constitutional principles
+
+---
+
+## 📋 Quick Reference: Command Usage Pattern
+
+```bash
+/speckit.specify "I want to add [feature description]"
+# Review at: specs/1-feature-name/spec.md
+
+/speckit.plan           # Generates research.md, data-model.md, contracts/, quickstart.md, plan.md
+
+/speckit.tasks          # Generates tasks.md with dependency-ordered implementation steps
+
+/speckit.checklist      # Generates quality checklist for requirements
+
+/speckit.implement      # Creates implementation following all specifications
+
+/speckit.analyze        # Analyzes existing codebase or feature consistency
+```
+
+---
+
+## 🎓 Project Context: Demonstrating AI Systems
+
+### Purpose
+This workspace demonstrates the Speckit framework capabilities for AI-assisted software development, serving as a proof-of-concept environment where stakeholders observe how AI agents handle complete feature development lifecycles in a transparent, documented manner.
+
+### Key Benefits Over Traditional AI Coding
+- **Development Transparency**: Every decision documented with reasoning
+- **Consistent Feature Quality**: Structured workflow ensures quality
+- **Knowledge Sharing**: Constitution files encode project-wide principles
+- **Audit Trails**: Research records before implementation decisions
+
+---
