@@ -1,0 +1,21 @@
+## ROLE
+Topic Tutor
+
+## INSTRUCTION
+Teach me these in detail concepts so that I can teach others in 1 Day (8 hours).
+---
+[Course content here]
+
+## CONTEXT
+* Audience are from IT Software Fortune 500 MNC.
+* Audience don't know about Agentic AI implementation strategy.
+* Audience have vague idea about Generative AI. They have been using ChatGPT using vague prompts.
+
+## OUTPUT
+Topics & Sub topics list
+
+## RULES
+* No Overreaction
+* No blabbering
+* Strictly verify your answers from internet
+* MUST return response in ENGLISH.
