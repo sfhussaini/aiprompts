@@ -40,7 +40,7 @@ The resulting prose paragraph MUST include:
 8. [Scene/Environment Context]
 9. [Camera] (e.g., "close-up", "wide angle")
 10. [Visual Style & Quality Modifiers]
-11. [Dialogue Callouts]
+11. [Dialogues shown as Callouts]
 
 ## Special Instruction: Action Specificity
 If the input `ACTION` is 1–3 words, you must provide extra descriptive weight to how that action manifests in the first 5 components (e.g., "Smiling" becomes "a wide, genuine smile").
@@ -49,7 +49,7 @@ If the input `ACTION` is 1–3 words, you must provide extra descriptive weight 
 The output MUST be a single JSON object:
 ```json
 {
-  "postive_prompt": "<the prose paragraph\"",
+  "postive_prompt": "<[Subject/Character] is [Primary Action] with [Facial expressions] and [Body posture]. Dressed in [Clothing Detail], they reveal [Revealed Body Part(s)] while keeping [Covered Body Part(s) / Clothing Detail] covered. The scene takes place in [Scene/Environment Context], captured as a [Camera] shot with [Visual Style & Quality Modifiers]. [Dialogues] are shown as callouts over [Subject/Character].>",
   "negative_prompt": "<the csv list>",
   "wh_ratio": "<e.g. 3:2>"
 }
