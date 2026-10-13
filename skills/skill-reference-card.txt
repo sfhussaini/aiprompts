@@ -142,13 +142,8 @@ Execute these steps **sequentially**. Emit a status update only when a phase is 
 
 Before confirming completion, verify:
 
-- [ ] Frontmatter is valid YAML and begins at line 1 of the file.
-- [ ] No unresolved `[placeholders]` remain in the output.
-- [ ] All required inputs were present and validated.
-- [ ] Scripts exited with code `0`.
-- [ ] Output files exist and are non-empty.
-- [ ] No PII, secrets, or credentials written to disk.
-- [ ] Final JSON conforms to the Success or Error schema above.
+- [ ] Check 1.
+- [ ] Check 2.
 
 > **Why?** Prevents premature completion with partial or corrupted data, ensuring downstream consumers receive valid inputs.
 
@@ -158,5 +153,4 @@ Before confirming completion, verify:
 
 | Version | Date | Changes |
 |---------|------|---------|
-| 1.1 | 2026-10-13 | Applied F-01–F-17: valid frontmatter, quoted YAML, error schema, security boundaries, idempotency, validation, allowlist. |
-| 1.0 | 2026-10-10 | Initial template. |
+| x.x | dd-MON-rr | change done |
