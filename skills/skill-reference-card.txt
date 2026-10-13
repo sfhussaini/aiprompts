@@ -93,6 +93,16 @@ Return the final result in this JSON structure:
 | **Script** | `scripts/[name].py` | Handles the conversion/processing of the final file. |
 | **Docs** | `resources/[name].md` | Reference guide for the agent to ensure quality. |
 ```
+---
+
+## 🔍 Quality Checklist
+
+Before confirming completion, verify:
+- [ ] Check 1.
+- [ ] Check 2.
+- [ ] So on ...
+
+> **Why?** Prevents premature completion with partial or corrupted data. Ensures downstream consumers get valid inputs.
 
 ***
 
