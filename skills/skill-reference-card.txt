@@ -67,13 +67,12 @@ Execute these steps **sequentially**. Emit a status update only when a phase is 
 
 ### 5. Processing Phase (Script Execution)
 
-#### 5.1 Processing Step [X]
+#### 5.1 Processing Step
 - **Script:** Execute `scripts/[script_name].py` via `run_commands`.
 - **Command:** `python scripts/[script_name].py output/[input_path] output/[output_path]`
-- **Idempotency:** Add `--force` only if overwriting is intended.
 - **Validation:** Confirm the script exits with code `0`, then verify the output file exists and is non-empty using `get_file_info`.
 
-#### 5.2 Processing Step [Y]
+#### 5.2 Processing Step
 - **Script:** Execute `scripts/[script_name_2].py` via `run_commands`.
 - **Command:** `python scripts/[script_name_2].py output/[input_path] output/[output_path]`
 - **Validation:** Confirm exit code `0` and non-empty output.
