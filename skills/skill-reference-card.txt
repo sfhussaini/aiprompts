@@ -1,117 +1,163 @@
-# 📄 SKILL.md Template
-
-```markdown
 ---
-name: [skill-name]
-description: |
-  [One sentence explaining the PRIMARY goal of the skill]. 
-  Use when the user provides [Required Inputs] to generate [Expected Final Output].
+name: "skill-name"
+description: >-
+  Performs [skill category] to produce [expected final output]. Use when the user
+  provides [required inputs] and needs [specific outcome].
 license: MIT
+allowed-tools:
+  - ask_question
+  - fetch_web_content
+  - search_codebase
+  - read_files
+  - write_file
+  - run_commands
+  - get_file_info
 metadata:
-  author: [Name/System]
-  version: "1.0"
+  author: "syed.hussaini@live.com"
+  version: "1.1"
+  last-updated: "2026-10-13"
 ---
+
+> **Version:** 1.1 · **Author:** Syed Fazalullah Hussaini· **License:** MIT
+
+# SKILL: [skill-name]
 
 ## 🎯 Overview
 
 This skill performs **[Skill Category]** to achieve **[Business/Educational Goal]**.
 
 ### Capabilities
-- **Primary:** [Main function - e.g., Research and structure content].
-- **Secondary:** [Supporting function - e.g., File conversion or validation].
-- **Output Format:** [e.g., .docx, .json, .md, or a specific folder structure].
+- **Primary:** [Main function — e.g., Research and structure content].
+- **Secondary:** [Supporting function — e.g., File conversion or validation].
+- **Output Format:** [e.g., `.docx`, `.json`, `.md`, or a specific folder structure].
 
 ### Constraints (When NOT to use)
 - [Constraint 1: e.g., If input X is missing].
 - [Constraint 2: e.g., If the task is too simple for this workflow].
 
+### Security & Boundaries
+- **File writes:** Restricted to the workspace output directory. Never write outside the skill root.
+- **Network access:** Limited to the domains required for research. No arbitrary outbound calls.
+- **PII / Secrets:** Do not persist credentials, tokens, or personal data in outputs.
+- **Idempotency:** Scripts overwrite existing outputs only when `--force` is passed; otherwise they fail safely.
+- **Dependencies:** Requires Python 3.10+ and packages listed in `requirements.txt`.
+
 ---
 
 ## ⚙️ Operational Workflow
 
-The agent MUST execute these steps **sequentially**. Provide a status update to the user after each phase.
+Execute these steps **sequentially**. Emit a status update only when a phase is long-running, blocked, or requires user input.
 
 ### 1. Validation Phase
 - **Check:** Verify [Input A] and [Input B] are present.
-- **Action:** If missing, use `ask_question` to gather specifics.
+- **Action:** If missing, use `ask_question` to gather specifics before proceeding.
 
 ### 2. Research & Gathering Phase
 - **Tools:** Use `fetch_web_content` or `search_codebase`.
 - **Goal:** Gather [Specific Data Points] and synthesize them into a knowledge base.
 
 ### 3. Structuring Phase
-- **Logic:** Organize data into [Specific Hierarchy - e.g., Stages $\rightarrow$ Steps].
-- **Criteria:** Ensure the flow follows [Specific Framework - e.g., RISCOR or Bloom's Taxonomy].
+- **Logic:** Organize data into [Specific Hierarchy — e.g., Stages → Steps].
+- **Criteria:** Ensure the flow follows [Specific Framework — e.g., RISCOR or Bloom's Taxonomy].
 
 ### 4. Drafting Phase (Asset Integration)
 - **Asset:** Read `assets/[template_name].md` using `read_files`.
 - **Action:** Populate the template with researched data.
-- **Output:** Save as `[filename].md` using the `editor` tool.
+- **Output:** Save as `output/[filename].md` using `write_file`.
 
 ### 5. Processing Phase (Script Execution)
-#### 5x. Processing Step [X] (Script Execution)
+
+#### 5.1 Processing Step [X]
 - **Script:** Execute `scripts/[script_name].py` via `run_commands`.
-- **Command:** `python scripts/[script_name].py [input_path] [output_path]`
-- **Validation:** Verify the output file exists using `filesystem__get_file_info`.
+- **Command:** `python scripts/[script_name].py output/[input_path] output/[output_path]`
+- **Idempotency:** Add `--force` only if overwriting is intended.
+- **Validation:** Confirm the script exits with code `0`, then verify the output file exists and is non-empty using `get_file_info`.
+
+#### 5.2 Processing Step [Y]
+- **Script:** Execute `scripts/[script_name_2].py` via `run_commands`.
+- **Command:** `python scripts/[script_name_2].py output/[input_path] output/[output_path]`
+- **Validation:** Confirm exit code `0` and non-empty output.
+
 ---
 
 ## 📥 Input Specification
 
 | Field | Type | Requirement | Description | Example |
 |-------|------|-------------|-------------|---------|
-| [Field 1] | [String/CSV] | Required | [What it is] | "Example Value" |
-| [Field 2] | [String] | Optional | [What it is] | "Example Value" |
+| [Field 1] | String/CSV | Required | [What it is] | "Example Value" |
+| [Field 2] | String | Optional | [What it is] | "Example Value" |
 
 ---
 
 ## 📤 Output Specification
 
-### Final Delivery Format
-Return the final result in this JSON structure:
+### Success
 
 ```json
 {
   "status": "success",
   "result": {
-    "primary_output": "absolute/path/to/file",
-    "supporting_assets": ["path1", "path2"]
+    "primary_output": "output/[filename].md",
+    "supporting_assets": ["output/[asset1]", "output/[asset2]"]
   },
   "metadata": {
-    "version": "1.0",
-    "processing_time": "0ms"
+    "version": "1.1",
+    "processing_time_ms": 0
   }
 }
 ```
+
+### Error
+
+```json
+{
+  "status": "error",
+  "error": {
+    "code": "MISSING_INPUT",
+    "message": "Required field '[field]' was not provided.",
+    "recoverable": true
+  },
+  "metadata": {
+    "version": "1.1",
+    "processing_time_ms": 0
+  }
+}
+```
+
+**Error codes:** `MISSING_INPUT`, `INVALID_INPUT`, `SCRIPT_FAILURE`, `VALIDATION_FAILED`, `PERMISSION_DENIED`.
 
 ---
 
 ## 🛠️ Resource Map
 
 | Resource | Path | Purpose |
-|----------|------|----------|
-| **Template** | `assets/[name].md` | Provides the structural blueprint for the output. |
-| **Script** | `scripts/[name].py` | Handles the conversion/processing of the final file. |
-| **Docs** | `resources/[name].md` | Reference guide for the agent to ensure quality. |
-```
+|----------|------|---------|
+| **Template** | `assets/[name].md` | Structural blueprint for the output. |
+| **Script** | `scripts/[name].py` | Handles conversion/processing of the final file. |
+| **Docs** | `resources/[name].md` | Reference guide for quality assurance. |
+| **Dependencies** | `requirements.txt` | Python packages required by scripts. |
+
 ---
 
-## 🔍 Quality Checklist
+## ✅ Quality Checklist
 
 Before confirming completion, verify:
-- [ ] Check 1.
-- [ ] Check 2.
-- [ ] So on ...
 
-> **Why?** Prevents premature completion with partial or corrupted data. Ensures downstream consumers get valid inputs.
+- [ ] Frontmatter is valid YAML and begins at line 1 of the file.
+- [ ] No unresolved `[placeholders]` remain in the output.
+- [ ] All required inputs were present and validated.
+- [ ] Scripts exited with code `0`.
+- [ ] Output files exist and are non-empty.
+- [ ] No PII, secrets, or credentials written to disk.
+- [ ] Final JSON conforms to the Success or Error schema above.
 
-***
+> **Why?** Prevents premature completion with partial or corrupted data, ensuring downstream consumers receive valid inputs.
 
-### 🔑 Why this works (The "RISCOR" of Skills):
+---
 
-If we apply your **RISCOR** logic to this template:
-*   **Role**: The `name` and `description` tell the AI exactly who it is (e.g., "You are a Workshop Builder").
-*   **Instruction**: The `Overview` and `Capabilities` sections define the core mission.
-*   **Steps**: The `Operational Workflow` provides a step-by-step algorithm (Validation $\rightarrow$ Research $\rightarrow$ Structure $\rightarrow$ Draft $\rightarrow$ Process).
-*   **Context**: The `Resource Map` and `Assets` give the AI the environmental context (Where are the scripts? Where is the template?).
-*   **Output**: The `Output Specification` ensures the machine-readable result is consistent.
-*   **Rules**: The `Constraints` section sets the hard boundaries of when the skill should or should not be used.
+## 📚 Changelog
+
+| Version | Date | Changes |
+|---------|------|---------|
+| 1.1 | 2026-10-13 | Applied F-01–F-17: valid frontmatter, quoted YAML, error schema, security boundaries, idempotency, validation, allowlist. |
+| 1.0 | 2026-10-10 | Initial template. |
