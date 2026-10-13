@@ -49,10 +49,10 @@ The agent MUST execute these steps **sequentially**. Provide a status update to 
 - **Output:** Save as `[filename].md` using the `editor` tool.
 
 ### 5. Processing Phase (Script Execution)
+#### 5x. Processing Step [X] (Script Execution)
 - **Script:** Execute `scripts/[script_name].py` via `run_commands`.
 - **Command:** `python scripts/[script_name].py [input_path] [output_path]`
 - **Validation:** Verify the output file exists using `filesystem__get_file_info`.
-
 ---
 
 ## 📥 Input Specification
