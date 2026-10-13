@@ -1,88 +1,178 @@
----
 name: story-builder
 description: |
-  Generates a structured narrative using cinematic cues and specific formatting. Use this when the user wants to create a "story" or "script" based on a theme, idea, and tone. 
-  Trigger keywords: "create a story", "write a script", "build a narrative", "story_builder".
-license: MIT
+  Generate a complete narrative story with cinematic vision, dialogue, and structured formatting. Use this skill when the user provides a "title" or "theme" and wants to develop a full story including setting, characters, plot progression, and visual direction.
+MIT
 metadata:
-  opencode/autoinvoke: true
+  author: "syed.hussaini@live.com"
+  version: "1.1"
 ---
 
-## Overview
+> **Version:** 1.1 · **Author:** syedhussaini@livecom · **License:** MIT
 
-This skill transforms a raw concept into a structured, cinematic story draft using a predefined template and automated file generation.
+# SKILL: story-builder
 
-### What this skill does
-- **Primary:** Generates a formatted narrative including setting, camera cues, and dialogue.
-- **Secondary:** Automatically creates the local directory structure and saves the output to a `.txt` file.
-- **Output format:** A structured text file saved in the user's specified path.
+## 🎯 Overview
 
-### When NOT to use this skill
-- If the user only wants a short summary without cinematic cues or dialogue.
-- For non-fiction technical documentation (use `technical-writer` instead).
+This skill performs **** to achieve **cinematic story development**.
 
----
+### Capabilities
+- **Primary:** Transform raw ideas into structured narrative files with cinematic vision, dialogue, and plot progression.
+- **Secondary:** Apply the output template structure to ensure consistent formatting across all generated stories.
+- **Output Format:** .txt
 
-## When to Use
+### Constraints (When NOT to use)
+- If the user is asking for a simple text description without full story development intent.
+- For tasks requiring only image prompts (use `prompt-formula` skill instead).
+- **Restricted to the workspace output directory. Never write outside the skill root.**.
 
-Use this skill when:
-- The user says: "Create a story about [Topic]" or "Write a script for [Idea]".
-- The input includes specific narrative elements like **Theme**, **Tone**, and **Story Idea**.
-- The goal is to produce a physical file in a specific directory.
-
----
-
-## Workflow
-
-Follow these steps **in order**:
-
-1. **Input Collection**
-   - Collect the following from the user: `Theme`, `Story Idea`, `Tone`, and `FolderPath`.
-   - If any are missing, ask the user for clarification before proceeding.
-
-2. **Content Generation**
-   - Reference the template in `assets/output_template.md`.
-   - Populate the template with the provided `Theme`, `Story Idea`, and `Tone`. 
-   - Ensure the narrative follows the "Pronoun Preference" rule (e.g., use "She" instead of "Maya").
-
-3. **File System Execution**
-   - Use the script `scripts/generate_story.py` to finalize the output.
-   - Pass the generated content and the `FolderPath` as arguments to the script.
-   - The script will create the folder (if missing) and save the file as `story.txt`.
-
-4. **Confirmation**
-   - Confirm to the user that the story has been successfully generated at the specified path.
+### Security & Boundaries
+- **Limited to the domains required for research. No arbitrary outbound calls.**.
+- **Do not persist credentials, tokens, or personal data in outputs.**.
+- **Scripts overwrite existing outputs only when `--force` is passed; otherwise they fail safely.**.
+- **Requires Python 3.10+ and packages listed in `requirements.txt`.**.
 
 ---
 
-## Input
+## ⚙️ Operational Workflow
 
-### Required fields
+Execute these steps **sequentially**. Emit a status update only when a phase is long-running, blocked, or requires user input.
 
-| Field | Type | Description | Example |
-|-------|------|-------------|---------|
-| Theme | String | The core concept or genre (e.g., "Cyberpunk Noir"). | Cyberpunk Noir |
-| Story Idea | String | The specific plot or premise. | A detective finds a robot with human memories. |
-| Tone | String | The emotional atmosphere (e.g., Melancholic, High-octane). | Melancholic and gritty. |
-| FolderPath | String | The local path where the file should be saved. | ./projects/my_story |
+### 1. Validation Phase
+- **Check:** Verify that Title, Theme, and Summary are present.
+- **Action:** If any component is missing or brief (1-3 words), use `ask_question` to gather specific details before proceeding.
+
+### 2. Research & Gathering Phase
+- **Tools:** Use `read_files` for assets and `run_commands` if script checks are needed.
+- **Goal:** Consult `assets/output_template.md` to confirm the required narrative structure and check `scripts/` for any logic scripts required before formatting.
+
+### 3. Structuring Phase
+    1. **Read & Split Brief**: Identify Fixed Content vs. Audience Decisions.
+    2. **Fix Setting & Context**: Determine Location, Time of Day, and Atmosphere.
+    3. **Write Opening Narration**: Describe medium, style, subject, and background/palette.
+    4. **Inventory Characters & Dialogue**: List all characters' locations and any legible text in reading order.
+    5. **Walk the Narrative Arc**: Follow specific paths (Opening -> Rising Action -> Climax -> Resolution) for plot progression.
+
+### 4. Drafting Phase (Asset Integration)
+- **Asset:** Use the `assets/output_template.md` using `read_files`.
+- **Action:** Populate the template with researched data including narrative paragraphs, dialogue exchanges, and action details.
+- **Output:** Save as `output/[filename].txt` using `write_file`.
+
+### 5. Processing Phase (Script Execution)
+
+#### 5.1 Processing Step
+- **Script:** Execute `scripts/generate_story.py` via `run_commands`.
+- **Command:** `python scripts/generate_story.py --path output/[input_path] --filename [output_filename] --content "[story_content]"`
+- **Validation:** Confirm the script exits with code `0`, then verify the output file exists and is non-empty using `get_file_info`.
 
 ---
 
-## Output
+## 📥 Input Specification
 
-### Output structure
+| Field | Type | Requirement | Description | Example |
+|-------|------|-------------|-------------|---------|
+| Title | String | Required | The working title for the story. | "The Last Guardian" |
+| Theme | String | Required | The core concept or genre of the story. | "A cyberpunk tale about redemption and sacrifice" |
+| Summary | String | Optional | A concise summary of what happens in the story. | "A rogue android discovers its creator's secret mission." |
+
+---
+
+## 📤 Output Specification
+
+### Success
+
+  ### Final Delivery Format
+  
+  Return the final result using this structure (based on `assets/output_template.md`):
+  
+  ```markdown
+  # Story Title: [Title]
+  
+  ## Theme: [Theme]
+  *A brief description of the core concept or genre.*
+  
+  ## Story Summary: [Summary]
+  *A concise, compelling summary of what happens in this story. What is the main conflict?*
+  
+  ---
+  
+  ### Setting & Context
+  **Location:** [Location]
+  **Time of Day:** [Time of Day]
+  
+  ### Cinematic Vision
+  **Camera Suggestion:** [Camera Shot Idea]
+  
+  ---
+  
+  ## Narrative & Dialogue (The Story)
+  
+  **(Start with a strong opening narration to set the mood and scene.)**
+  
+  [Narrative Paragraph 1: Establish the setting, introduce the main character(s), and hint at the central conflict. Use sensory details—what does it look like, sound like, smell like?]
+  
+  *Note: Prioritize using pronouns ('She', 'Her') over proper names unless it is a key moment of introduction.*
+  
+  ***
+  
+  **Character A:** "[Dialogue Line]"
+  *(Action/Narration Detail: Describe what Character A is doing while speaking.)*
+  
+  [Narrative Paragraph 2: Develop the action. What happens next? Does the character react to something? Introduce tension.]
+  
+  ***
+  
+  **Character B:** "[Dialogue Line]"
+  *(Action/Narration Detail: Describe Character B's reaction or movement.)*
+  
+  [... continue with plot progression ...]
+  
+  **(Concluding Narration):** [Final paragraph that resolves the immediate conflict, leaves a lingering question, or provides a powerful final image. Tie back to the Theme.]```
+```
+
+### Error Response Format
 
 ```json
 {
-  "status": "success",
-  "result": {
-    "file_path": "/path/to/story.txt",
-    "content_preview": "First 100 characters of the story..."
+  "status": "error",
+  "error": {
+    "code": "MISSING_INPUT",
+    "message": "Required field '[field]' was not provided.",
+    "recoverable": true
   },
   "metadata": {
-    "theme": "...",
-    "tone": "..."
-  },
-  "warnings": [],
-  "errors": []
+    "version": "1.0",
+    "processing_time": "0ms"
+  }
 }
+```
+
+**Error codes:** `MISSING_INPUT`, `INVALID_INPUT`, `SCRIPT_FAILURE`, `VALIDATION_FAILED`, `PERMISSION_DENIED`.
+
+---
+
+## 🛠️ Resource Map
+
+| Resource | Path | Purpose |
+|----------|------|---------|
+| **Template** | `assets/output_template.md` | Provides the narrative blueprint (story.txt) for the output. |
+| **Script** | `scripts/generate_story.py` | Handles the creation and writing of story files to specified directories. |
+| **Dependencies** | `requirements.txt` | Python packages required by scripts. |
+
+---
+
+## ✅ Quality Checklist
+
+Before confirming completion, verify:
+
+- [ ] Check 1: Verify all sections from `assets/output_template.md` are present in the output.
+- [ ] Check 2: Ensure narrative flow follows Opening -> Rising Action -> Climax -> Resolution structure.
+
+> **Why?** Prevents premature completion with partial or corrupted data, ensuring downstream consumers receive valid inputs.
+
+---
+
+## 📚 Changelog
+
+| Version | Date | Changes |
+|---------|------|---------|
+| 1.0 | 2026-10-13 | Initial template application from reference card. |

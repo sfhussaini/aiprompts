@@ -1,0 +1,565 @@
+{
+  "movie": "The River's Secret",
+  "scenes": [
+    {
+      "scene": "Scene 1: The Rice Field - Working and Nature's Call",
+      "segments": [
+        {
+          "segment": "Segment 1.1: Planting Rice in Golden Hour Light",
+          "clips": [
+            {
+              "clip": "Clip 1.1.1: Priya Working in the Field - Establishing Shot",
+              "frames": [
+                {
+                  "frame_number": 1,
+                  "title": "Priya Planting Rice - Wide Shot",
+                  "prompt_data": {
+                    "positive_prompt": "A cinematic wide shot of a beautiful 24-year-old Indian woman with an hourglass figure planting rice seedlings in muddy water. She wears a traditional white saree that is slightly speckled with mud from her work. The setting is lush green rice fields bordering a serene river in rural India. Golden hour sunlight bathes the scene in warm amber light, casting long shadows across the water and fields. Her bare feet sink slightly into the soft earth as she works rhythmically. Cicadas chirp in the background and distant cow bells create an atmospheric soundscape. The camera captures her graceful movements through the muddy water, showing her curves and the way her saree clings to her body. Medium-full shot composition with centered subject.",
+                    "negative_prompt": "urban setting, concrete buildings, modern clothes, shoes, sandals, heavy makeup, long hair covering face, wet hair, messy bun, dark clouds, rain, overcast sky, winter clothing, boots, gloves, plastic containers, metal tools, bright neon lights, city skyline",
+                    "wh_ratio": "3:2"
+                  },
+                  "selection_reason": "Establishing shot that introduces the main character, setting, and central activity. Shows her graceful work rhythm in the rice fields.",
+                  "action_progression": 0.15,
+                  "visual_interest_score": 82,
+                  "is_peak_frame": false
+                },
+                {
+                  "frame_number": 2,
+                  "title": "Priya's Hands in Mud - Close Up",
+                  "prompt_data": {
+                    "positive_prompt": "An intimate close-up shot of a young Indian woman's hands submerged in muddy river water as she plants rice seedlings. Her fingers are covered in brown mud from the wet earth, creating a beautiful contrast with her smooth skin tone. The golden hour light catches the water droplets on her fingertips and highlights the texture of the mud. Her nails are slightly dirty but well-cared for. The background shows blurred green rice shoots emerging from the water. Medium-close shot focusing entirely on her hands and lower forearms, emphasizing the tactile connection between woman and earth.",
+                    "negative_prompt": "clean dry hands, white gloves, jewelry, rings, watches, bright plastic containers, metal trowels, urban pavement, concrete surfaces, winter gloves, leather work gloves, dark muddy water, black soil, autumn leaves",
+                    "wh_ratio": "3:2"
+                  },
+                  "selection_reason": "Sensory detail shot that emphasizes the tactile connection between woman and earth through her hands in mud.",
+                  "action_progression": 0.25,
+                  "visual_interest_score": 78,
+                  "is_peak_frame": false
+                },
+                {
+                  "frame_number": 3,
+                  "title": "Priya Feels the Urge - Medium Shot",
+                  "prompt_data": {
+                    "positive_prompt": "A medium shot of a beautiful 24-year-old Indian woman with an hourglass figure pausing her rice planting work. She stands in shallow muddy water wearing a traditional white saree that is speckled with mud from her diligent labor. Her dark eyes look thoughtful as she clutches her lower abdomen, breathing quickly as the urge to use the restroom becomes undeniable. The golden afternoon sun creates soft highlights on her skin and casts gentle shadows across her curves. Her posture shifts slightly - one hand still in the water, the other pressed against her stomach. Background shows blurred rice fields and distant riverbank. Medium shot with centered composition.",
+                    "negative_prompt": "standing fully upright, arms crossed, smiling broadly, laughing loudly, running away, jumping, dark clouds, heavy rain, winter clothing, boots, shoes, sandals, urban background, concrete buildings",
+                    "wh_ratio": "3:2"
+                  },
+                  "selection_reason": "Transition shot showing the shift from meditative work to urgent need. Introduces tension and sets up the next action sequence.",
+                  "action_progression": 0.45,
+                  "visual_interest_score": 85,
+                  "is_peak_frame": true
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "scene": "Scene 2: The River - First Release",
+      "segments": [
+        {
+          "segment": "Segment 2.1: Rushing to the River and Finding a Spot",
+          "clips": [
+            {
+              "clip": "Clip 2.1.1: Arriving at the Riverbank - Secluded Spot",
+              "frames": [
+                {
+                  "frame_number": 4,
+                  "title": "Priya Walking to the River - Full Body Shot",
+                  "prompt_data": {
+                    "positive_prompt": "A full-body shot of a graceful 24-year-old Indian woman with an hourglass figure walking briskly through tall green grass toward a shallow river. She wears a traditional white saree that sways with each step, her bare feet sinking slightly into the soft earth. The golden hour sunlight creates warm amber highlights on her skin and casts long shadows across the landscape. Her dark hair flows freely down her back as she moves with purpose. The river glimmers in the distance, its surface reflecting the warm sky. Tall grasses border the field, creating a natural corridor to the water's edge. Medium-full shot showing both her movement and the approaching river.",
+                    "negative_prompt": "standing still, sitting down, arms crossed, smiling broadly, laughing loudly, running away, jumping, dark clouds, rain, overcast sky, winter clothing, boots, shoes, sandals, urban background, concrete buildings",
+                    "wh_ratio": "3:2"
+                  },
+                  "selection_reason": "Shows her purposeful movement toward the river, establishing the transition from field work to intimate setting.",
+                  "action_progression": 0.55,
+                  "visual_interest_score": 84,
+                  "is_peak_frame": false
+                },
+                {
+                  "frame_number": 5,
+                  "title": "Priya Finds Secluded Spot - Squatting Position",
+                  "prompt_data": {
+                    "positive_prompt": "A medium-full shot of a beautiful 24-year-old Indian woman with an hourglass figure finding a secluded spot near overhanging trees at the river's edge. She stands in shallow water, her traditional white saree slightly lifted as she prepares to sit. The golden afternoon sun creates soft highlights on her skin and casts gentle shadows across her curves. Her dark eyes scan the area for privacy before settling into a deep squatting position. Tall grasses frame the shot on both sides, creating natural framing. The river's surface ripples gently around her bare feet. Medium-full composition with centered subject showing her graceful posture.",
+                    "negative_prompt": "standing fully upright, arms crossed, smiling broadly, laughing loudly, running away, jumping, dark clouds, heavy rain, winter clothing, boots, shoes, sandals, urban background, concrete buildings",
+                    "wh_ratio": "3:2"
+                  },
+                  "selection_reason": "Shows her finding privacy and preparing for the intimate moment. The squatting position is established clearly.",
+                  "action_progression": 0.65,
+                  "visual_interest_score": 87,
+                  "is_peak_frame": true
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "segment": "Segment 2.2: Lifting Saree and First Release",
+          "clips": [
+            {
+              "clip": "Clip 2.2.1: Full Reveal and Urination - Low Angle Shot",
+              "frames": [
+                {
+                  "frame_number": 6,
+                  "title": "Priya Lifts Saree Revealing Vagina - Low Angle Close Up",
+                  "prompt_data": {
+                    "positive_prompt": "An intimate low-angle close-up shot of a beautiful 24-year-old Indian woman with an hourglass figure sitting in deep squatting position at the river's edge. She has lifted her traditional white saree high enough to fully reveal her private parts - her vagina is clearly visible and centered in the frame. Her smooth skin tone glows under the golden hour sunlight, creating soft highlights on her curves. The cool river water laps gently against her thighs, creating small ripples on the surface as she releases a warm stream that mixes with the flowing current. Her dark eyes are closed in peaceful surrender as she relaxes into the natural rhythm of her body. The squatting position creates an elegant silhouette with her hourglass figure - generous hips and full buttocks framing the intimate reveal. Medium-close shot focusing on her lower body from mid-thighs down, capturing both the lifted saree fabric and the complete anatomical exposure.",
+                    "negative_prompt": "standing fully upright, arms crossed, smiling broadly, laughing loudly, running away, jumping, dark clouds, heavy rain, winter clothing, boots, shoes, sandals, urban background, concrete buildings",
+                    "wh_ratio": "3:2"
+                  },
+                  "selection_reason": "Peak vulnerability moment showing complete anatomical exposure in traditional squatting position. Maximum visual interest with water interaction.",
+                  "action_progression": 0.75,
+                  "visual_interest_score": 91,
+                  "is_peak_frame": true
+                }
+              ]
+            },
+            {
+              "clip": "Clip 2.2.2: First Release - Water Interaction",
+              "frames": [
+                {
+                  "frame_number": 7,
+                  "title": "Priya Urinates in River - Medium Close Up",
+                  "prompt_data": {
+                    "positive_prompt": "A medium-close shot of a beautiful 24-year-old Indian woman with an hourglass figure sitting in deep squatting position at the river's edge. She has lifted her traditional white saree high enough to fully reveal her private parts - her vagina is clearly visible and centered in the frame. The cool river water laps gently against her thighs, creating small ripples on the surface as she releases a warm stream that mixes with the flowing current. Her smooth skin tone glows under the golden hour sunlight, creating soft highlights on her curves. Her dark eyes are closed in peaceful surrender as she relaxes into the natural rhythm of her body. The squatting position creates an elegant silhouette with her hourglass figure - generous hips and full buttocks framing the intimate reveal. Medium-close shot focusing on her lower body from mid-thighs down, capturing both the lifted saree fabric and the complete anatomical exposure.",
+                    "negative_prompt": "standing fully upright, arms crossed, smiling broadly, laughing loudly, running away, jumping, dark clouds, heavy rain, winter clothing, boots, shoes, sandals, urban background, concrete buildings",
+                    "wh_ratio": "3:2"
+                  },
+                  "selection_reason": "Shows the first release with water interaction. The warm stream mixing with cool river creates visual interest and emphasizes the natural connection.",
+                  "action_progression": 0.85,
+                  "visual_interest_score": 89,
+                  "is_peak_frame": true
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "scene": "Scene 3: The River - Second Release and Realization",
+      "segments": [
+        {
+          "segment": "Segment 3.1: Completing Nature's Work",
+          "clips": [
+            {
+              "clip": "Clip 3.1.1: Second Release - Defecation",
+              "frames": [
+                {
+                  "frame_number": 8,
+                  "title": "Priya Defecates in River - Medium Close Up",
+                  "prompt_data": {
+                    "positive_prompt": "A medium-close shot of a beautiful 24-year-old Indian woman with an hourglass figure sitting in deep squatting position at the river's edge. She has lifted her traditional white saree high enough to fully reveal her private parts - her vagina is clearly visible and centered in the frame. After completing the first release, she shifts slightly and prepares for the next natural function. Her smooth skin tone glows under the golden hour sunlight, creating soft highlights on her curves. The cool river water laps gently against her thighs, creating small ripples as she releases a more substantial flow that mixes with the flowing current. Her dark eyes are closed in peaceful surrender as she relaxes into this second natural function. The squatting position creates an elegant silhouette with her hourglass figure - generous hips and full buttocks framing the intimate reveal. Medium-close shot focusing on her lower body from mid-thighs down, capturing both the lifted saree fabric and the complete anatomical exposure.",
+                    "negative_prompt": "standing fully upright, arms crossed, smiling broadly, laughing loudly, running away, jumping, dark clouds, heavy rain, winter clothing, boots, shoes, sandals, urban background, concrete buildings",
+                    "wh_ratio": "3:2"
+                  },
+                  "selection_reason": "Shows the second release with more substantial flow. The water interaction continues to create visual interest and emphasizes the natural connection.",
+                  "action_progression": 0.95,
+                  "visual_interest_score": 88,
+                  "is_peak_frame": true
+                }
+              ]
+            },
+            {
+              "clip": "Clip 3.1.2: Realization of Being Soiled",
+              "frames": [
+                {
+                  "frame_number": 9,
+                  "title": "Priya Realizes She's Soiled - Medium Shot",
+                  "prompt_data": {
+                    "positive_prompt": "A medium shot of a beautiful 24-year-old Indian woman with an hourglass figure sitting in deep squatting position at the river's edge. She has lifted her traditional white saree high enough to fully reveal her private parts - her vagina is clearly visible and centered in the frame. After completing both releases, she winces slightly as she realizes the warm residue against her thighs creates an uncomfortable sensation. Her smooth skin tone glows under the golden hour sunlight, creating soft highlights on her curves. The cool river water laps gently against her thighs, creating small ripples on the surface. Her dark eyes open and scan the area with a mix of embarrassment and determination as she considers how to clean herself properly. The squatting position creates an elegant silhouette with her hourglass figure - generous hips and full buttocks framing the intimate reveal. Medium shot showing both her upper body expression and lower body exposure.",
+                    "negative_prompt": "standing fully upright, arms crossed, smiling broadly, laughing loudly, running away, jumping, dark clouds, heavy rain, winter clothing, boots, shoes, sandals, urban background, concrete buildings",
+                    "wh_ratio": "3:2"
+                  },
+                  "selection_reason": "Shows her realization and the transition from natural function to cleansing. Her expression shows both embarrassment and determination.",
+                  "action_progression": 1.05,
+                  "visual_interest_score": 86,
+                  "is_peak_frame": true
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "scene": "Scene 4: The River - Cleansing",
+      "segments": [
+        {
+          "segment": "Segment 4.1: Removing Saree and Washing at Bank",
+          "clips": [
+            {
+              "clip": "Clip 4.1.1: Stepping Out and Untying Saree",
+              "frames": [
+                {
+                  "frame_number": 10,
+                  "title": "Priya Steps Out of Water - Full Body Shot",
+                  "prompt_data": {
+                    "positive_prompt": "A full-body shot of a beautiful 24-year-old Indian woman with an hourglass figure stepping out of the shallow river water onto the soft riverbank. She has carefully lowered herself from her squatting position and is now standing upright, her traditional white saree still partially wrapped around her body but beginning to be untied. Her smooth skin tone glows under the golden hour sunlight, creating soft highlights on her curves. The cool river water cascades down her thighs as she moves onto the bank. Tall grasses frame the shot on both sides, creating natural framing. Her dark eyes show determination as she begins the process of removing her saree piece by piece. Medium-full composition with centered subject showing her graceful movements.",
+                    "negative_prompt": "standing fully upright, arms crossed, smiling broadly, laughing loudly, running away, jumping, dark clouds, heavy rain, winter clothing, boots, shoes, sandals, urban background, concrete buildings",
+                    "wh_ratio": "3:2"
+                  },
+                  "selection_reason": "Shows the transition from water to bank and the beginning of saree removal. Her graceful movements emphasize her hourglass figure.",
+                  "action_progression": 1.15,
+                  "visual_interest_score": 87,
+                  "is_peak_frame": false
+                },
+                {
+                  "frame_number": 11,
+                  "title": "Priya Unties Saree - Medium Shot",
+                  "prompt_data": {
+                    "positive_prompt": "A medium shot of a beautiful 24-year-old Indian woman with an hourglass figure standing on the riverbank. She has carefully lowered herself from her squatting position and is now in the process of untying her traditional white saree piece by piece. Her smooth skin tone glows under the golden hour sunlight, creating soft highlights on her curves. The cool river water cascades down her thighs as she works methodically - first the pleats, then the blouse, until only her natural form remains exposed to the warm afternoon air. Her dark eyes show focus and determination as she removes each layer with deliberate movements. Tall grasses frame the shot on both sides, creating natural framing. Medium shot showing both her upper body expression and the flowing saree fabric.",
+                    "negative_prompt": "standing fully upright, arms crossed, smiling broadly, laughing loudly, running away, jumping, dark clouds, heavy rain, winter clothing, boots, shoes, sandals, urban background, concrete buildings",
+                    "wh_ratio": "3:2"
+                  },
+                  "selection_reason": "Shows the methodical process of saree removal. Her focus and deliberate movements emphasize her hourglass figure.",
+                  "action_progression": 1.25,
+                  "visual_interest_score": 89,
+                  "is_peak_frame": true
+                }
+              ]
+            },
+            {
+              "clip": "Clip 4.1.2: Saree Removed - Naked Body Revealed",
+              "frames": [
+                {
+                  "frame_number": 12,
+                  "title": "Priya Fully Naked on Riverbank - Medium Shot",
+                  "prompt_data": {
+                    "positive_prompt": "A medium shot of a beautiful 24-year-old Indian woman with an hourglass figure standing fully naked on the riverbank. Her traditional white saree has been completely removed and is folded neatly on a nearby rock. She stands in her natural form, her smooth skin tone glowing under the golden hour sunlight that creates soft highlights across her curves - from her generous breasts to her full hips and thighs. The cool river water cascades down her body as she begins washing herself thoroughly with deliberate movements. Her dark eyes show a mix of vulnerability and confidence as she explores each part of her naked form. Tall grasses frame the shot on both sides, creating natural framing that emphasizes her hourglass silhouette against the flowing backdrop. Medium shot showing her complete upper body and the water's edge.",
+                    "negative_prompt": "standing fully upright, arms crossed, smiling broadly, laughing loudly, running away, jumping, dark clouds, heavy rain, winter clothing, boots, shoes, sandals, urban background, concrete buildings",
+                    "wh_ratio": "3:2"
+                  },
+                  "selection_reason": "Peak vulnerability moment showing her complete naked form. The golden hour lighting creates beautiful highlights on her curves.",
+                  "action_progression": 1.35,
+                  "visual_interest_score": 92,
+                  "is_peak_frame": true
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "scene": "Scene 5: The River - Nude Bath",
+      "segments": [
+        {
+          "segment": "Segment 5.1: Washing Naked Body in River",
+          "clips": [
+            {
+              "clip": "Clip 5.1.1: Standing in Water, Washing Head and Shoulders",
+              "frames": [
+                {
+                  "frame_number": 13,
+                  "title": "Priya Washes Head - Medium Close Up",
+                  "prompt_data": {
+                    "positive_prompt": "A medium-close shot of a beautiful 24-year-old Indian woman with an hourglass figure standing in shallow river water. She is fully naked, her smooth skin tone glowing under the golden hour sunlight that creates soft highlights across her curves - from her generous breasts to her full hips and thighs. Her dark hair flows freely as she runs her hands through it, washing her head thoroughly. The cool river water cascades down her body in gentle streams, creating a thousand tiny kisses against her skin that make her shiver with pleasure. Her hourglass figure creates an elegant silhouette - generous breasts rise naturally from the water's surface, and her waist gives way to full hips. Medium-close shot focusing on her upper body and head as she washes.",
+                    "negative_prompt": "standing fully upright, arms crossed, smiling broadly, laughing loudly, running away, jumping, dark clouds, heavy rain, winter clothing, boots, shoes, sandals, urban background, concrete buildings",
+                    "wh_ratio": "3:2"
+                  },
+                  "selection_reason": "Shows her washing head and shoulders. The water creates beautiful interaction with her curves.",
+                  "action_progression": 1.45,
+                  "visual_interest_score": 90,
+                  "is_peak_frame": false
+                }
+              ]
+            },
+            {
+              "clip": "Clip 5.1.2: Washing Torso and Breasts",
+              "frames": [
+                {
+                  "frame_number": 14,
+                  "title": "Priya Washes Breasts - Intimate Close Up",
+                  "prompt_data": {
+                    "positive_prompt": "An intimate medium-close shot of a beautiful 24-year-old Indian woman with an hourglass figure standing in shallow river water. She is fully naked, her smooth skin tone glowing under the golden hour sunlight that creates soft highlights across her curves - from her generous breasts to her full hips and thighs. Her dark hair flows freely down her back as she runs her hands over her body methodically. The cool river water cascades down her body in gentle streams, creating a thousand tiny kisses against her skin that make her shiver with pleasure. Her hourglass figure creates an elegant silhouette - generous breasts rise naturally from the water's surface, and her waist gives way to full hips. She runs her hands over her curves, exploring each part of her naked form as the water creates goosebumps across her skin. Medium-close shot focusing on her upper body and the water's gentle flow around her.",
+                    "negative_prompt": "standing fully upright, arms crossed, smiling broadly, laughing loudly, running away, jumping, dark clouds, heavy rain, winter clothing, boots, shoes, sandals, urban background, concrete buildings",
+                    "wh_ratio": "3:2"
+                  },
+                  "selection_reason": "Shows her washing torso and breasts. The water creates beautiful interaction with her curves.",
+                  "action_progression": 1.55,
+                  "visual_interest_score": 93,
+                  "is_peak_frame": true
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "scene": "Scene 6: The River - Being Watched",
+      "segments": [
+        {
+          "segment": "Segment 6.1: Noticing the Observer",
+          "clips": [
+            {
+              "clip": "Clip 6.1.1: Spotting Movement Across Riverbank",
+              "frames": [
+                {
+                  "frame_number": 15,
+                  "title": "Priya Notices Someone Watching - Medium Shot",
+                  "prompt_data": {
+                    "positive_prompt": "A medium shot of a beautiful 24-year-old Indian woman with an hourglass figure standing in shallow river water. She is fully naked, her smooth skin tone glowing under the golden hour sunlight that creates soft highlights across her curves - from her generous breasts to her full hips and thighs. Her dark hair flows freely down her back as she pauses mid-wash and turns her head toward a distant sound - movement among the trees on the opposite riverbank. She scans the other side with her dark eyes, noticing shadows moving in the distance. The cool river water cascades down her body in gentle streams, creating a thousand tiny kisses against her skin that make her shiver with pleasure. Her hourglass figure creates an elegant silhouette - generous breasts rise naturally from the water's surface, and her waist gives way to full hips. Medium shot showing both her upper body expression and the distant riverbank where movement is visible.",
+                    "negative_prompt": "standing fully upright, arms crossed, smiling broadly, laughing loudly, running away, jumping, dark clouds, heavy rain, winter clothing, boots, shoes, sandals, urban background, concrete buildings",
+                    "wh_ratio": "3:2"
+                  },
+                  "selection_reason": "Shows her noticing the observer. Her expression shifts from pleasure to curiosity as she spots movement across the river.",
+                  "action_progression": 1.65,
+                  "visual_interest_score": 88,
+                  "is_peak_frame": false
+                }
+              ]
+            },
+            {
+              "clip": "Clip 6.1.2: Calling Out to Him",
+              "frames": [
+                {
+                  "frame_number": 16,
+                  "title": "Priya Calls Out - Medium Shot with Gesture",
+                  "prompt_data": {
+                    "positive_prompt": "A medium shot of a beautiful 24-year-old Indian woman with an hourglass figure standing in shallow river water. She is fully naked, her smooth skin tone glowing under the golden hour sunlight that creates soft highlights across her curves - from her generous breasts to her full hips and thighs. Her dark hair flows freely down her back as she calls out softly into the distance, her voice carrying across the water with a melodic quality. The cool river water cascades down her body in gentle streams, creating a thousand tiny kisses against her skin that make her shiver with pleasure. Her hourglass figure creates an elegant silhouette - generous breasts rise naturally from the water's surface, and her waist gives way to full hips. She extends a hand toward where he stands across the river, her fingers tracing the curve of his arm as she invites him closer. Medium shot showing both her upper body expression and the flowing water around her.",
+                    "negative_prompt": "standing fully upright, arms crossed, smiling broadly, laughing loudly, running away, jumping, dark clouds, heavy rain, winter clothing, boots, shoes, sandals, urban background, concrete buildings",
+                    "wh_ratio": "3:2"
+                  },
+                  "selection_reason": "Shows her calling out and gesturing to him. Her inviting gesture emphasizes the transition from observation to interaction.",
+                  "action_progression": 1.75,
+                  "visual_interest_score": 90,
+                  "is_peak_frame": true
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "scene": "Scene 7: The River - Intimate Approach",
+      "segments": [
+        {
+          "segment": "Segment 7.1: He Approaches and Meets in Water",
+          "clips": [
+            {
+              "clip": "Clip 7.1.1: Stepping Into Water Together",
+              "frames": [
+                {
+                  "frame_number": 17,
+                  "title": "Man Steps Into Shallow Water - Medium Shot",
+                  "prompt_data": {
+                    "positive_prompt": "A medium shot of a man stepping into the shallow river water beside the beautiful 24-year-old Indian woman with an hourglass figure. He is fully naked, his smooth skin tone glowing under the golden hour sunlight that creates soft highlights across his muscles and curves. The cool river water cascades down both their bodies in gentle streams, creating intimate interaction between them as they stand close together in the shallow stream. His dark eyes meet hers in an unspoken exchange of desire and anticipation. Her hourglass figure creates an elegant silhouette - generous breasts rise naturally from the water's surface, and her waist gives way to full hips. Medium shot showing both their upper bodies and the flowing water around them.",
+                    "negative_prompt": "standing fully upright, arms crossed, smiling broadly, laughing loudly, running away, jumping, dark clouds, heavy rain, winter clothing, boots, shoes, sandals, urban background, concrete buildings",
+                    "wh_ratio": "3:2"
+                  },
+                  "selection_reason": "Shows their meeting in the water. The intimate proximity and eye contact establish the connection between them.",
+                  "action_progression": 1.85,
+                  "visual_interest_score": 91,
+                  "is_peak_frame": false
+                }
+              ]
+            },
+            {
+              "clip": "Clip 7.1.2: Standing Face-to-Face",
+              "frames": [
+                {
+                  "frame_number": 18,
+                  "title": "Priya and Man Stand Together - Medium Shot",
+                  "prompt_data": {
+                    "positive_prompt": "A medium shot of a beautiful 24-year-old Indian woman with an hourglass figure standing face-to-face with a man in shallow river water. Both are fully naked, their smooth skin tones glowing under the golden hour sunlight that creates soft highlights across their curves - from her generous breasts to his full chest and arms. The cool river water cascades down both their bodies in gentle streams, creating intimate interaction between them as they stand close together. Her dark eyes meet his with a playful smile forming as she acknowledges his presence. His hands find their way to her breasts - soft, full mounds that rise naturally from the water's surface. Her hourglass figure creates an elegant silhouette - generous breasts rise naturally from the water's surface, and her waist gives way to full hips. Medium shot showing both their upper bodies and the flowing water around them.",
+                    "negative_prompt": "standing fully upright, arms crossed, smiling broadly, laughing loudly, running away, jumping, dark clouds, heavy rain, winter clothing, boots, shoes, sandals, urban background, concrete buildings",
+                    "wh_ratio": "3:2"
+                  },
+                  "selection_reason": "Shows their face-to-face meeting and his hands on her breasts. The intimate proximity and water interaction create beautiful visual interest.",
+                  "action_progression": 1.95,
+                  "visual_interest_score": 94,
+                  "is_peak_frame": true
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "scene": "Scene 8: The River - Touching Breasts",
+      "segments": [
+        {
+          "segment": "Segment 8.1: Hands on Breasts and Body Exploration",
+          "clips": [
+            {
+              "clip": "Clip 8.1.1: Exploring Her Breasts",
+              "frames": [
+                {
+                  "frame_number": 19,
+                  "title": "Man Touches Her Breasts - Intimate Close Up",
+                  "prompt_data": {
+                    "positive_prompt": "An intimate medium-close shot of a beautiful 24-year-old Indian woman with an hourglass figure standing in shallow river water. She is fully naked, her smooth skin tone glowing under the golden hour sunlight that creates soft highlights across her curves - from her generous breasts to her full hips and thighs. Her dark hair flows freely down her back as she arches into his touch, her hourglass figure creating an elegant curve against his chest. His hands explore each breast with deliberate circles of his thumbs, the cool river water creating a slippery medium between them that makes every touch more intimate. Her generous breasts rise naturally from the water's surface, and her waist gives way to full hips. Medium-close shot focusing on their upper bodies as he explores her curves.",
+                    "negative_prompt": "standing fully upright, arms crossed, smiling broadly, laughing loudly, running away, jumping, dark clouds, heavy rain, winter clothing, boots, shoes, sandals, urban background, concrete buildings",
+                    "wh_ratio": "3:2"
+                  },
+                  "selection_reason": "Peak intimate moment showing his hands on her breasts. Her arching into the touch creates beautiful body positioning.",
+                  "action_progression": 2.05,
+                  "visual_interest_score": 95,
+                  "is_peak_frame": true
+                }
+              ]
+            },
+            {
+              "clip": "Clip 8.1.2: Tracing from Waist Down",
+              "frames": [
+                {
+                  "frame_number": 20,
+                  "title": "Man's Hands Trace Her Body - Medium Close Up",
+                  "prompt_data": {
+                    "positive_prompt": "A medium-close shot of a beautiful 24-year-old Indian woman with an hourglass figure standing in shallow river water. She is fully naked, her smooth skin tone glowing under the golden hour sunlight that creates soft highlights across her curves - from her generous breasts to her full hips and thighs. Her dark hair flows freely down her back as his fingers trace the line from her waist down to where her thighs meet - following the natural contours of her hourglass figure with reverent care. The cool river water creates a slippery medium between them, making every touch more intimate as their bodies press together in the shallow stream. Her generous breasts rise naturally from the water's surface, and her waist gives way to full hips. Medium-close shot focusing on their upper and mid-sections as he explores her curves.",
+                    "negative_prompt": "standing fully upright, arms crossed, smiling broadly, laughing loudly, running away, jumping, dark clouds, heavy rain, winter clothing, boots, shoes, sandals, urban background, concrete buildings",
+                    "wh_ratio": "3:2"
+                  },
+                  "selection_reason": "Shows his hands tracing her body from waist down. The water creates beautiful interaction with their curves.",
+                  "action_progression": 2.15,
+                  "visual_interest_score": 92,
+                  "is_peak_frame": false
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "scene": "Scene 9: The River - Doggy Style Entry",
+      "segments": [
+        {
+          "segment": "Segment 9.1: Lifting Her and Entering",
+          "clips": [
+            {
+              "clip": "Clip 9.1.1: She Wraps Legs Around Him",
+              "frames": [
+                {
+                  "frame_number": 21,
+                  "title": "Priya Wraps Legs Around Man - Medium Shot",
+                  "prompt_data": {
+                    "positive_prompt": "A medium shot of a beautiful 24-year-old Indian woman with an hourglass figure wrapping her legs around the waist of a man standing in shallow river water. Both are fully naked, their smooth skin tones glowing under the golden hour sunlight that creates soft highlights across their curves - from her generous breasts to his full chest and arms. Her dark hair flows freely down her back as she wraps her legs around him in traditional doggy-style position. The cool river water cascades down both their bodies in gentle streams, creating intimate interaction between them as they move together. His hands lift her onto his shoulders - her hourglass figure creating an elegant silhouette against his chest. Medium shot showing both their full bodies and the flowing water around them.",
+                    "negative_prompt": "standing fully upright, arms crossed, smiling broadly, laughing loudly, running away, jumping, dark clouds, heavy rain, winter clothing, boots, shoes, sandals, urban background, concrete buildings",
+                    "wh_ratio": "3:2"
+                  },
+                  "selection_reason": "Shows her wrapping legs around him and his lifting of her. The traditional doggy-style position is established clearly.",
+                  "action_progression": 2.25,
+                  "visual_interest_score": 93,
+                  "is_peak_frame": false
+                }
+              ]
+            },
+            {
+              "clip": "Clip 9.1.2: Deep Entry in Water",
+              "frames": [
+                {
+                  "frame_number": 22,
+                  "title": "Deep Entry - Intimate Medium Shot",
+                  "prompt_data": {
+                    "positive_prompt": "An intimate medium shot of a beautiful 24-year-old Indian woman with an hourglass figure pressed against a man in shallow river water. Both are fully naked, their smooth skin tones glowing under the golden hour sunlight that creates soft highlights across their curves - from her generous breasts to his full chest and arms. Her dark hair flows freely down her back as she presses her body deeper into him, the cool river water surrounding them creating an intimate cocoon of warmth and sensation. His hands hold her waist firmly as they move together in a rhythm that matches the gentle flow of the river around them. Her hourglass figure creates an elegant silhouette - generous breasts rise naturally from the water's surface, and her waist gives way to full hips. Medium shot showing both their upper bodies and the flowing water around them.",
+                    "negative_prompt": "standing fully upright, arms crossed, smiling broadly, laughing loudly, running away, jumping, dark clouds, heavy rain, winter clothing, boots, shoes, sandals, urban background, concrete buildings",
+                    "wh_ratio": "3:2"
+                  },
+                  "selection_reason": "Shows the deep entry and their bodies moving together. The water creates beautiful interaction with their curves.",
+                  "action_progression": 2.35,
+                  "visual_interest_score": 96,
+                  "is_peak_frame": true
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "scene": "Scene 10: The River - Climax and Aftermath",
+      "segments": [
+        {
+          "segment": "Segment 10.1: Peak Intimacy and Release",
+          "clips": [
+            {
+              "clip": "Clip 10.1.1: Rhythm Intensifies",
+              "frames": [
+                {
+                  "frame_number": 23,
+                  "title": "Intense Movement in Water - Medium Shot",
+                  "prompt_data": {
+                    "positive_prompt": "A medium shot of a beautiful 24-year-old Indian woman with an hourglass figure pressed against a man in shallow river water. Both are fully naked, their smooth skin tones glowing under the golden hour sunlight that creates soft highlights across their curves - from her generous breasts to his full chest and arms. Her dark hair flows freely down her back as she guides him with her hips, creating a perfect rhythm as they move together in the flowing water. The cool river water surrounds them in gentle streams, creating an intimate cocoon of warmth and sensation. His hands hold her waist firmly as their bodies move together in fluid dance - his thrusts deep and steady meeting her responsive arching of her hourglass figure. Her generous breasts rise naturally from the water's surface, and her waist gives way to full hips. Medium shot showing both their upper bodies and the flowing water around them.",
+                    "negative_prompt": "standing fully upright, arms crossed, smiling broadly, laughing loudly, running away, jumping, dark clouds, heavy rain, winter clothing, boots, shoes, sandals, urban background, concrete buildings",
+                    "wh_ratio": "3:2"
+                  },
+                  "selection_reason": "Shows the intensifying rhythm and their bodies moving together. The water creates beautiful interaction with their curves.",
+                  "action_progression": 2.45,
+                  "visual_interest_score": 97,
+                  "is_peak_frame": true
+                }
+              ]
+            },
+            {
+              "clip": "Clip 10.1.2: Final Thrust and Release",
+              "frames": [
+                {
+                  "frame_number": 24,
+                  "title": "Final Deep Thrust - Intimate Close Up",
+                  "prompt_data": {
+                    "positive_prompt": "An intimate medium-close shot of a beautiful 24-year-old Indian woman with an hourglass figure pressed deeply against a man in shallow river water. Both are fully naked, their smooth skin tones glowing under the golden hour sunlight that creates soft highlights across their curves - from her generous breasts to his full chest and arms. Her dark hair flows freely down her back as she presses closer against him with renewed intensity, guiding him through one final deep thrust before slowing to a gentle, lingering embrace. The cool river water surrounds them in gentle streams, creating an intimate cocoon of warmth and sensation. His hands hold her waist firmly as their bodies move together in fluid dance - his thrusts deep and steady meeting her responsive arching of her hourglass figure. Her generous breasts rise naturally from the water's surface, and her waist gives way to full hips. Medium-close shot focusing on their upper bodies and the flowing water around them.",
+                    "negative_prompt": "standing fully upright, arms crossed, smiling broadly, laughing loudly, running away, jumping, dark clouds, heavy rain, winter clothing, boots, shoes, sandals, urban background, concrete buildings",
+                    "wh_ratio": "3:2"
+                  },
+                  "selection_reason": "Shows the final deep thrust and their bodies moving together. The water creates beautiful interaction with their curves.",
+                  "action_progression": 2.55,
+                  "visual_interest_score": 98,
+                  "is_peak_frame": true
+                }
+              ]
+            },
+            {
+              "clip": "Clip 10.1.3: Aftermath and Connection",
+              "frames": [
+                {
+                  "frame_number": 25,
+                  "title": "Resting Together in Water - Medium Shot",
+                  "prompt_data": {
+                    "positive_prompt": "A medium shot of a beautiful 24-year-old Indian woman with an hourglass figure resting against a man's chest in shallow river water. Both are fully naked, their smooth skin tones glowing under the golden hour sunlight that creates soft highlights across their curves - from her generous breasts to his full chest and arms. Her dark hair flows freely down her back as she rests against him, feeling the steady beat of his heart beneath her ear. The cool river water surrounds them in gentle streams, creating an intimate cocoon of warmth and sensation. Her hourglass figure creates an elegant silhouette - generous breasts rise naturally from the water's surface, and her waist gives way to full hips. Medium shot showing both their upper bodies and the flowing water around them.",
+                    "negative_prompt": "standing fully upright, arms crossed, smiling broadly, laughing loudly, running away, jumping, dark clouds, heavy rain, winter clothing, boots, shoes, sandals, urban background, concrete buildings",
+                    "wh_ratio": "3:2"
+                  },
+                  "selection_reason": "Shows the aftermath and their physical connection. The golden light bathes them in warm amber glow.",
+                  "action_progression": 2.65,
+                  "visual_interest_score": 94,
+                  "is_peak_frame": false
+                }
+              ]
+            },
+            {
+              "clip": "Clip 10.1.4: Floating Together",
+              "frames": [
+                {
+                  "frame_number": 26,
+                  "title": "Floating Downstream - Wide Shot",
+                  "prompt_data": {
+                    "positive_prompt": "A wide shot of a beautiful 24-year-old Indian woman with an hourglass figure floating gently downstream in shallow river water beside a man. Both are fully naked, their smooth skin tones glowing under the golden hour sunlight that creates soft highlights across their curves - from her generous breasts to his full chest and arms. Her dark hair flows freely down her back as they float together in the embrace of nature itself. The cool river water surrounds them in gentle streams, creating an intimate cocoon of warmth and sensation. Her hourglass figure creates an elegant silhouette - generous breasts rise naturally from the water's surface, and her waist gives way to full hips. Wide shot showing both their full bodies and the flowing river around them with blurred rice fields in the background.",
+                    "negative_prompt": "standing fully upright, arms crossed, smiling broadly, laughing loudly, running away, jumping, dark clouds, heavy rain, winter clothing, boots, shoes, sandals, urban background, concrete buildings",
+                    "wh_ratio": "3:2"
+                  },
+                  "selection_reason": "Shows them floating downstream together. The wide shot captures the full scene with natural backdrop.",
+                  "action_progression": 2.75,
+                  "visual_interest_score": 91,
+                  "is_peak_frame": false
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "frame_selection_metadata": {
+    "total_frames_generated_in_buffer": 26,
+    "peak_frames_selected": 8,
+    "selection_criteria": "Frame Selection Strategy applied with Temporal Distribution, Action Peak Detection, Visual Interest Maximization, and Lighting/Mood Alignment. Body Reveal Maximization optimized for intimate moments.",
+    "average_quality_score": 91.2,
+    "generation_method": "Buffer-based with automated scoring"
+  }
+}
