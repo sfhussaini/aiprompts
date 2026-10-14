@@ -1,81 +1,77 @@
 ---
-name: "skill-name"
+name: "skill-name-in-kebab-case"
 description: >-
-  Performs [skill category] to produce [expected final output]. Use when the user
-  provides [required inputs] and needs [specific outcome].
+  What the skill does, and when to use it. Include concrete trigger phrases
+  the user is likely to say.
 license: MIT
 allowed-tools:
-  - ask_question
-  - fetch_web_content
-  - search_codebase
-  - read_files
-  - write_file
-  - run_commands
-  - get_file_info
+  - tool_one
+  - tool_two
 metadata:
-  author: "syed.hussaini@live.com"
-  version: "1.1"
-  last-updated: "2026-10-13"
+  author: "name@example.com"
+  version: "1.0"
+  last-updated: "YYYY-MM-DD"
 ---
 
-> **Version:** 1.1 · **Author:** Syed Fazalullah Hussaini· **License:** MIT
+> **Version:** 1.0 · **Author:** Your Name · **License:** MIT
 
-# SKILL: [skill-name]
+# SKILL: skill-name-in-kebab-case
+
 
 ## 🎯 Overview
 
-This skill performs **[Skill Category]** to achieve **[Business/Educational Goal]**.
+This skill performs **[Transformation]** to achieve **[Outcome]**.
 
 ### Capabilities
-- **Primary:** [Main function — e.g., Research and structure content].
-- **Secondary:** [Supporting function — e.g., File conversion or validation].
-- **Output Format:** [e.g., `.docx`, `.json`, `.md`, or a specific folder structure].
+- **Primary:** Main thing the skill does.
+- **Secondary:** Supporting behavior.
+- **Output Format:** File or structure produced.
 
 ### Constraints (When NOT to use)
-- [Constraint 1: e.g., If input X is missing].
-- [Constraint 2: e.g., If the task is too simple for this workflow].
+- Constraint 1: condition under which the skill must not run.
+- Constraint 2: another exclusion.
 
 ### Security & Boundaries
-- **File writes:** Restricted to the workspace output directory. Never write outside the skill root.
-- **Network access:** Limited to the domains required for research. No arbitrary outbound calls.
-- **PII / Secrets:** Do not persist credentials, tokens, or personal data in outputs.
-- **Idempotency:** Scripts overwrite existing outputs only when `--force` is passed; otherwise they fail safely.
-- **Dependencies:** Requires Python 3.10+ and packages listed in `requirements.txt`.
+- **File writes:** Allowed locations only.
+- **Network access:** Allowed domains or none.
+- **PII / Secrets:** Handling rules.
+- **Idempotency:** Overwrite and re-run behavior.
+- **Dependencies:** Tools or files required.
+
+---
+
+## 🧠 Core Philosophy
+
+- **Principle 1:** Description.
+- **Principle 2:** Description.
+- **Principle 3:** Description.
+
+> **Why?** One sentence on the reason for these principles.
 
 ---
 
 ## ⚙️ Operational Workflow
 
-Execute these steps **sequentially**. Emit a status update only when a phase is long-running, blocked, or requires user input.
+Execute these steps **sequentially**.
 
 ### 1. Validation Phase
-- **Check:** Verify [Input A] and [Input B] are present.
-- **Action:** If missing, use `ask_question` to gather specifics before proceeding.
+- **Check:** What must be present.
+- **Action:** What to do if it is missing.
 
 ### 2. Research & Gathering Phase
-- **Tools:** Use `fetch_web_content` or `search_codebase`.
-- **Goal:** Gather [Specific Data Points] and synthesize them into a knowledge base.
+- **Tools:** Tools used.
+- **Goal:** What to collect.
+- **Action:** What to do with it.
+- **Output:** What this phase produces.
 
 ### 3. Structuring Phase
-- **Logic:** Organize data into [Specific Hierarchy — e.g., Stages → Steps].
-- **Criteria:** Ensure the flow follows [Specific Framework — e.g., RISCOR or Bloom's Taxonomy].
+- **Logic:** How to organize.
+- **Action:** What to write and where.
 
-### 4. Drafting Phase (Asset Integration)
-- **Asset:** Read `assets/[template_name].md` using `read_files`.
-- **Action:** Populate the template with researched data.
-- **Output:** Save as `output/[filename].md` using `write_file`.
-
-### 5. Processing Phase (Script Execution)
-
-#### 5.1 Processing Step
-- **Script:** Execute `scripts/[script_name].py` via `run_commands`.
-- **Command:** `python scripts/[script_name].py output/[input_path] output/[output_path]`
-- **Validation:** Confirm the script exits with code `0`, then verify the output file exists and is non-empty using `get_file_info`.
-
-#### 5.2 Processing Step
-- **Script:** Execute `scripts/[script_name_2].py` via `run_commands`.
-- **Command:** `python scripts/[script_name_2].py output/[input_path] output/[output_path]`
-- **Validation:** Confirm exit code `0` and non-empty output.
+### 4. Processing Phase
+- **Logic:** Core rules.
+- **Command:** Exact operation.
+- **Validation:** How to confirm success.
 
 ---
 
@@ -83,47 +79,23 @@ Execute these steps **sequentially**. Emit a status update only when a phase is 
 
 | Field | Type | Requirement | Description | Example |
 |-------|------|-------------|-------------|---------|
-| [Field 1] | String/CSV | Required | [What it is] | "Example Value" |
-| [Field 2] | String | Optional | [What it is] | "Example Value" |
+| field_name | String | Required | What it is. | "example" |
 
 ---
 
 ## 📤 Output Specification
 
 ### Success
-
 ```json
-{
-  "status": "success",
-  "result": {
-    "primary_output": "output/[filename].md",
-    "supporting_assets": ["output/[asset1]", "output/[asset2]"]
-  },
-  "metadata": {
-    "version": "1.1",
-    "processing_time_ms": 0
-  }
-}
+{ "status": "success", "result": {}, "metadata": { "version": "1.0" } }
 ```
 
 ### Error
-
 ```json
-{
-  "status": "error",
-  "error": {
-    "code": "MISSING_INPUT",
-    "message": "Required field '[field]' was not provided.",
-    "recoverable": true
-  },
-  "metadata": {
-    "version": "1.1",
-    "processing_time_ms": 0
-  }
-}
+{ "status": "error", "error": { "code": "CODE", "message": "text", "recoverable": true }, "metadata": { "version": "1.0" } }
 ```
 
-**Error codes:** `MISSING_INPUT`, `INVALID_INPUT`, `SCRIPT_FAILURE`, `VALIDATION_FAILED`, `PERMISSION_DENIED`.
+**Error codes:** `CODE_ONE`, `CODE_TWO`.
 
 ---
 
@@ -131,21 +103,16 @@ Execute these steps **sequentially**. Emit a status update only when a phase is 
 
 | Resource | Path | Purpose |
 |----------|------|---------|
-| **Template** | `assets/[name].md` | Structural blueprint for the output. |
-| **Script** | `scripts/[name].py` | Handles conversion/processing of the final file. |
-| **Docs** | `resources/[name].md` | Reference guide for quality assurance. |
-| **Dependencies** | `requirements.txt` | Python packages required by scripts. |
+| Template | `assets/example.md` | What it is for. |
 
 ---
 
 ## ✅ Quality Checklist
 
-Before confirming completion, verify:
+- [ ] Check 1
+- [ ] Check 2
 
-- [ ] Check 1.
-- [ ] Check 2.
-
-> **Why?** Prevents premature completion with partial or corrupted data, ensuring downstream consumers receive valid inputs.
+> **Why?** What the checklist prevents.
 
 ---
 
@@ -153,4 +120,4 @@ Before confirming completion, verify:
 
 | Version | Date | Changes |
 |---------|------|---------|
-| x.x | dd-MON-rr | change done |
+| 1.0 | YYYY-MM-DD | Initial release. |
