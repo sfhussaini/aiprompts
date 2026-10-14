@@ -1,0 +1,12 @@
+# =============================================================================
+# STORY PROMPTS CONFIGURATION
+# =============================================================================
+
+# Frame Selection Mode: Determines which selection strategy to use for frame extraction.
+# 
+# Options:
+#   - "best": Use peak frame detection from selection_logic.md (high-quality, detailed coverage)
+#   - "firstmiddlelast": Use temporal keyframe selection from firstmiddlelast_selection_logic.md (quick summaries)
+#
+# Default: "best"
+frame_selection: firstmiddlelast
