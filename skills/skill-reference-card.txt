@@ -36,7 +36,7 @@ This skill performs **[Idea-to-Prompt Transformation]** to achieve **[Production
     - **Frame:** one still image inside a clip, described precisely enough to generate. Each clip has several candidate frames.
     - **Peak (`best`):** the single highest-action or highest-emotion frame per clip. Selects 1 frame per clip.
     - **First-Middle-Last (`firstmiddlelast`):** the opening, midpoint, and closing frame of each clip. Selects 3 frames per clip.
-    - **Character bible:** fixed visual descriptors for each recurring character and location, reused verbatim in every prompt.
+    - **Character descriptors:** fixed visual descriptors for each recurring character and location, stored once in `clipped-story.json` and reused verbatim in every prompt.
 
 
 ### Constraints (When NOT to use)
@@ -80,13 +80,29 @@ This skill operates on three guiding principles:
 ## ⚙️ Operational Workflow
 
 
-Execute these steps **sequentially**. Emit a status update only when a phase is long-running, blocked, or requires user input.
+Execute these steps **sequentially**.
+
+
+#### Progress Display (mandatory in Steps 3, 4, 5.1, 5.2)
+The agent must tell the user, in plain one-line messages, exactly what it is processing. Print the message **before** starting each unit of work and again **after** it is saved. Do not batch several clips of work into one silent stretch.
+
+| Moment | Message format |
+|--------|----------------|
+| Start of a phase | `[Step 4 · Drafting] Starting. 6 clips, 4 frames each, 1 clip per batch.` |
+| Before each clip | `[Step 4 · Clip 3/6] Drafting "the hologram" ...` |
+| Before each frame (Step 4 only) | `[Step 4 · Clip 3/6 · Frame 2/4] ...` |
+| After each save | `[Step 4 · Clip 3/6] Saved clip3-frames.json. Checkpoint updated.` |
+| On resume | `[Resuming] Found saved progress: clips 1-2 done. Continuing from clip 3/6.` |
+| Phase done | `[Step 4 · Drafting] Done. 6/6 clips saved.` |
+| Interruption notice (print once at the start of Step 4) | `If this run is interrupted, re-run the skill with the same idea. It will resume from the last saved clip.` |
+
+Rules: one line per message; no extra commentary; use the same bracket format in Steps 3, 5.1 (`Scoring`) and 5.2 (`Assembly`); the clip number and total must always be shown.
 
 
 ### 1. Validation Phase
 - **Check:**
     - `idea` is present and non-empty (else `MISSING_INPUT`).
-    - Run `get_file_info` on `output/final-frames.json` and `output/buffers/.drafting_state.json`.
+    - Re-run detection: run `get_file_info` on `output/final-frames.json` and `output/buffers/.drafting_state.json`. **"Not found" is the normal result on a first run; proceed.** Only a file that exists changes behavior (see Existing output / resume below).
     - Verify every template in the Resource Map is readable with `read_files` (else `TEMPLATE_NOT_FOUND`).
 - **Config resolution (single rule, in this order):**
     1. Input `mode`, if provided.
@@ -112,7 +128,7 @@ Execute these steps **sequentially**. Emit a status update only when a phase is 
         - **Conflict/Plot** (Main challenge, stakes, resolution hint)
         - **Visual Tone** (Lighting style, color palette, mood)
 - **Action:**
-    - **Build the character bible:** for each recurring character and location write fixed descriptors (age range, build, hair, clothing, distinguishing marks, palette). Save to `output/buffers/character-bible.json`.
+    - **Build character descriptors:** for each recurring character and location write fixed descriptors (age range, build, hair, clothing, distinguishing marks, palette). Hold them in the knowledge base; they are written to disk in Step 4 as the `character_descriptors` block of `clipped-story.json`.
     - **Craft Immersive Narration:** Transform raw responses into a rich, cinematic story with:
         - **Sensory Details** (sight, sound, smell, touch, taste)
         - **Character Dialogues** (natural-sounding conversations between characters including internal thoughts)
@@ -131,22 +147,30 @@ Execute these steps **sequentially**. Emit a status update only when a phase is 
 - **Logic:** Organize data into [Story Text] using `assets/formatted-story-template.md`.
 - **Criteria:** Ensure the flow follows [Narrative Arc — e.g., Setup → Conflict → Resolution].
 - **Action:**
-    - Save the clean, human-readable story as `output/story.txt` using `write_file`.
-    - Save the working copy with clip boundary markers (`[CLIP n]`) as `output/buffers/formatted-story.txt`.
+    - Write the story **`clips_per_batch` clip(s) at a time** (default 1) to `output/buffers/story-clipN.txt` (one file per clip), printing a Progress Display message before and after each. Never write the whole story in one call.
+    - Build the working copy with clip boundary markers (`[CLIP n]`) as `output/buffers/formatted-story.txt`, and the clean, human-readable `output/story.txt`, from those per-clip files using the **Merge Rule** (see Step 4).
 
 
 ### 4. Drafting Phase (Iterative & Timeout-Safe)
-- **Logic:** Fragment story into clips/frames in small batches (max 3 clips per iteration). Target `clips_target` clips and `candidate_frames_per_clip` candidate frames per clip (see Input Specification, config).
+- **Logic:** Fragment story into clips/frames in small batches (`clips_per_batch` clips per iteration, default 1, max 3). Target `clips_target` clips and `candidate_frames_per_clip` candidate frames per clip (see Input Specification, config).
 - **State Tracking:** Use a lightweight state file (`output/buffers/.drafting_state.json`) to track:
     - Total clips processed
     - Clips with frames generated
     - Last checkpoint for timeout recovery
-- **Timeout Safety:** Do not rely on time estimates. Rewrite the state file after **every batch**; that checkpoint is the only recovery mechanism. On startup, Step 1 checks for an existing state file and resumes from it.
+- **Timeout Safety:** Do not rely on time estimates. Never write one large file. Work in batches of `clips_per_batch` clips (default 1), in every phase (Drafting, Selection, Assembly). **Write each clip's file immediately after drafting it; do not plan or draft the next clip before the current file is saved and the state file is updated.** Print the Progress Display message at each of those points. Rewrite the state file after **every batch**; that checkpoint is the only recovery mechanism. On startup, Step 1 checks for an existing state file and resumes from its `phase` and checkpoint.
+- **Merge Rule (applies to every merged file: `formatted-story.txt`, `story.txt`, `final-frames.json`):**
+    1. Per-clip or per-batch files are the source of truth. Merge by reading them back in order; never regenerate merged content from memory, and never paraphrase while merging.
+    2. If `write_file` supports append, build the merged file incrementally: write the opening, append one batch at a time, then append the closing (for JSON: opening `{"frames": [`, commas between batches, closing `]}`).
+    3. If append is not supported, do a single merge write, only after every source file exists and is non-empty.
+    4. If the merge write fails or times out, keep all source files, stop with `WRITE_FAILED` (recoverable), and set the state `phase` so a re-run resumes at the merge only.
 - **Action:**
     - Read `assets/clipped-story-template.md` and `assets/clip-frames-template.md`.
-    - Process first batch of clips → save as `output/buffers/clipped-story.json`.
+    - Process first batch of clips → create `output/buffers/clipped-story.json`, with a top-level `character_descriptors` block (written once, never paraphrased) and a small clip **index** (clip number, title, one-line beat, location, path of its `story-clipN.txt`). Never put full story text in this file.
+    - After each later batch, re-read the file and rewrite it with that batch's index entries added (it stays small).
+    - At the start of every later batch (and after any resume), re-read `character_descriptors` from `clipped-story.json` before writing frames.
     - Then process frames for each clip → save as `output/buffers/clipX-frames.json`.
-    - Reuse character-bible descriptors verbatim in every frame's subject description.
+    - Reuse `character_descriptors` verbatim in every frame's subject description.
+    - **Keep drafts compact:** each candidate frame is a short draft of at most `max_frame_words` words (shot type, action, key setting detail, lighting). Do not write full prompts here; the full positive and negative prompts are composed only in Step 5.2.
 - **Output:** Save intermediate results (`output/buffers/formatted-story.txt`) and JSON buffers.
 - **State file schema:**
 ```json
@@ -155,12 +179,15 @@ Execute these steps **sequentially**. Emit a status update only when a phase is 
   "idea_summary": "one-line summary of the idea",
   "mode": "firstmiddlelast",
   "total_clips": 6,
+  "phase": "drafting",
   "clips_with_frames": [1, 2, 3],
+  "clips_scored": [],
+  "clips_assembled": [],
   "last_checkpoint": "step4_batch2",
   "updated": "2026-10-15"
 }
 ```
-    Set `status` to `"complete"` when Step 5.2 finishes.
+    `phase` is one of `drafting`, `scoring`, `assembly`, `complete`. Update `phase`, the relevant clip list, and `last_checkpoint` after every batch. Set `status` to `"complete"` when Step 5.2 finishes.
 
 
 ### 5. Processing Phase (LLM Execution)
@@ -170,15 +197,16 @@ Execute these steps **sequentially**. Emit a status update only when a phase is 
 - **Logic:** Use the mode resolved in Step 1 (`frame_selection`).
     - If `"firstmiddlelast"`: Use `assets/logic/firstmiddlelast_selection_logic.md` (3 frames per clip: first, middle, last by position; scoring decides which candidate fills each position).
     - If `"best"`: Use `assets/logic/peak_selection_logic.md` (1 peak frame per clip).
+- **Batching:** Score and select **`clips_per_batch` clip(s) per batch** (default 1), with a Progress Display message before and after each. After each batch, write that clip's scores, append its selections to `selected-frames.json`, add the clips to `clips_scored` in the state file, and move on.
 - **Command:** Apply weighted scoring formula: $Score = (Action \times 0.3) + (Visual \times 0.25) + (Lighting \times 0.15) + (Composition \times 0.15) + (Narrative \times 0.15)$
     - Every component is an integer **0-100**; the total is therefore 0-100.
     - Scoring anchors: **90-100** exceptional; **75-89** strong with minor weaknesses; **50-74** adequate but generic or partly unclear; **0-49** weak, missing, or contradicting the beat.
-    - Save all five sub-scores and the total for every candidate to `output/buffers/scores.json`.
+    - Save all five sub-scores and the total for every candidate of a clip to `output/buffers/clipX-scores.json` (one file per clip, not one file for all clips).
 - **Validation:** Confirm selected frames meet threshold ($\ge$85.0, configurable via `score_threshold`).
 - **If a selected frame is below threshold:**
     1. Redraft it up to 2 times: rewrite the frame description to improve its weakest component, rescore, and replace it in `clipX-frames.json`.
     2. If still below after 2 redrafts: with `strict_threshold: true` stop with `THRESHOLD_NOT_MET`; with `false` keep the highest-scoring candidate, set `"below_threshold": true` on it, and list it under `warnings` in the run report.
-- **Output:** Use `write_file` to save `output/buffers/selected-frames.json`:
+- **Output:** Use `write_file` to create `output/buffers/selected-frames.json` with the first batch, then rewrite it with each later batch appended (the file stays small: one short entry per selected frame):
 ```json
 {
   "mode": "firstmiddlelast",
@@ -188,20 +216,21 @@ Execute these steps **sequentially**. Emit a status update only when a phase is 
   ]
 }
 ```
-    Expected count: `clips_target x 3` for `firstmiddlelast`, or `clips_target x 1` for `best`. Verify the count matches before continuing.
+    After the last batch, expected count: `clips_target x 3` for `firstmiddlelast`, or `clips_target x 1` for `best`. Verify the count matches before continuing.
 
 
 #### 5.2 Final Assembly
 - **Asset:** Read `assets/final-frames.template.json` and `assets/prompt-format.md` using `read_files`.
+- **Batching:** Assemble **`clips_per_batch` clip(s) per batch** (default 1), with a Progress Display message before and after each. For each batch write `output/buffers/final-partN.json` (N = batch number), add the clips to `clips_assembled` in the state file, and checkpoint. Do not build all prompts in one write.
 - **Action:** Process `output/buffers/selected-frames.json` by populating templates with frame data via LLM reasoning.
-    - **positive:** character-bible descriptors (verbatim), action, setting, camera/shot type, lighting, palette, mood, and style tokens from `assets/prompt-format.md`. Must not exceed `max_prompt_chars`.
+    - **positive:** `character_descriptors` (verbatim), action, setting, camera/shot type, lighting, palette, mood, and style tokens from `assets/prompt-format.md`. Must not exceed `max_prompt_chars`.
     - **negative:** defaults from `assets/prompt-format.md` plus frame-specific items.
     - **wh_ratio:** the config value (default `"16:9"`).
     - **Consistency:** identical appearance wording for the same character in every prompt.
     - **Self-contained:** each prompt works alone, with no "same as before" references.
     - Re-run the content safety check on the final prompts.
-- **Command:** Use `write_file` to generate `output/final-frames.json` from selected frames and prompt format template. Also write the run report (see Output Specification) to `output/run-report.json`.
-- **Validation:** Confirm the output file exists and is non-empty using `get_file_info`. (No exit code check needed — pure file I/O.) Set `.drafting_state.json` status to `"complete"`.
+- **Command:** After all batches are done, merge every `final-partN.json` in order into `output/final-frames.json` using the **Merge Rule** (Step 4); the merge copies already-written prompts unchanged. If `merge_final` is `false` in the config, or the merge fails, write `output/final-frames.index.json` instead: a small manifest listing every `output/buffers/final-partN.json` in order, and treat those part files as the deliverable. Also write the run report (see Output Specification) to `output/run-report.json`.
+- **Validation:** Confirm the output file (or the manifest, when `merge_final` is `false`) exists and is non-empty using `get_file_info`. (No exit code check needed — pure file I/O.) Set `.drafting_state.json` status to `"complete"`.
 - **Final response to the user:** a short prose summary (what was made, mode used, frame count, any warnings, file locations) followed by the success JSON block.
 
 
@@ -223,12 +252,16 @@ Execute these steps **sequentially**. Emit a status update only when a phase is 
 
 ```yaml
 frame_selection: firstmiddlelast   # firstmiddlelast | best
-clips_target: 6                    # allowed 3-10
+clips_target: 6                    # allowed 3 up to max_clips_hard_limit
+max_clips_hard_limit: 12           # absolute ceiling; a larger clips_target stops with INVALID_CONFIG
+clips_per_batch: 1                 # allowed 1-3; keep at 1 if runs time out
+max_frame_words: 60                # cap per candidate frame draft in Step 4
 candidate_frames_per_clip: 4       # allowed 3-6 (at least 3 for firstmiddlelast)
 score_threshold: 85.0              # 0-100
 strict_threshold: false            # true = fail if any selected frame stays below threshold
 wh_ratio: "16:9"                   # aspect ratio used in every prompt
 max_prompt_chars: 1000             # hard cap per positive prompt
+merge_final: true                  # false = skip the large merge; deliver final-partN.json files plus final-frames.index.json
 ```
 
 
@@ -250,7 +283,7 @@ max_prompt_chars: 1000             # hard cap per positive prompt
       "output/story.txt",
       "output/buffers/clipped-story.json",
       "output/buffers/selected-frames.json",
-      "output/buffers/scores.json"
+      "output/buffers/clip1-scores.json"
     ]
   },
   "metadata": {
@@ -293,7 +326,7 @@ max_prompt_chars: 1000             # hard cap per positive prompt
 **Input:** `idea`: "A cyberpunk detective in a rainy alley finds a glowing data chip." `mode`: `best`.
 
 1. **Sufficiency:** under 50 words, no conflict or tone → one batched `ask_question`. Answer: "Mara Voss, 40s, silver bob, black trench; chip is stolen evidence; neon-noir."
-2. **Character bible:** `Mara Voss, woman in her 40s, silver bob haircut, weathered face, long black trench coat with a high collar, cybernetic left eye with a faint amber glow`.
+2. **Character descriptors:** `Mara Voss, woman in her 40s, silver bob haircut, weathered face, long black trench coat with a high collar, cybernetic left eye with a faint amber glow`.
 3. **Clips (6):** arrival, finding the chip, the hologram, a pursuer appears, the chase, the escape.
 4. **Frames:** 4 candidates per clip. Clip 2: close-up of hand lifting chip, crouched medium shot, over-shoulder, wide alley.
 5. **Selection (`best`):** close-up scores Action 80, Visual 92, Lighting 95, Composition 88, Narrative 85 → `0.3x80 + 0.25x92 + 0.15x95 + 0.15x88 + 0.15x85 = 86.2` (passes). 1 frame per clip, 6 total.
@@ -320,10 +353,11 @@ max_prompt_chars: 1000             # hard cap per positive prompt
 | **Final Template** | `assets/final-frames.template.json` | Output structure definition (renamed from `final-frames.json` in 1.9). |
 | **Prompt Format** | `assets/prompt-format.md` | Prompt string template (positive/negative/wh_ratio), style tokens, defaults. |
 | **Story Output** | `output/story.txt` | Clean human-readable story. |
-| **Buffers** | `output/buffers/*.json`, `formatted-story.txt` | Intermediate data (clips, frames, scores, selection, character bible, assumptions). |
+| **Buffers** | `output/buffers/` | Intermediate data: `story-clipN.txt`, `formatted-story.txt`, `clipped-story.json` (index plus `character_descriptors`), `clipX-frames.json`, `clipX-scores.json`, `selected-frames.json`, `final-partN.json`, `assumptions.json`. |
 | **State File** | `output/buffers/.drafting_state.json` | Checkpoint and resume tracking. |
 | **Run Report** | `output/run-report.json` | Final status block. |
-| **Final Output** | `output/final-frames.json` | Primary deliverable. |
+| **Final Output** | `output/final-frames.json` | Primary deliverable (merged). |
+| **Final Index** | `output/final-frames.index.json` | Manifest of `final-partN.json` files; used when `merge_final` is `false` or the merge fails. |
 
 
 ---
@@ -337,14 +371,16 @@ Before confirming completion, verify (any failure stops with `VALIDATION_FAILED`
 
 - [ ] Check 1: Every JSON file written parses and contains the keys required by its template.
 - [ ] Check 2: `output/story.txt` is non-empty and `formatted-story.txt` contains exactly `clips_target` clips.
-- [ ] Check 3: `output/final-frames.json` contains valid prompt strings (non-empty, within `max_prompt_chars`).
+- [ ] Check 3: `output/final-frames.json` (or `final-frames.index.json` when `merge_final` is `false`) contains valid prompt strings (non-empty, within `max_prompt_chars`).
 - [ ] Check 4: Selection mode used (`firstmiddlelast` vs `best`) matches the Step 1 config resolution.
 - [ ] **Check 5:** Verify `config/config.yaml`, if present, contains a valid `frame_selection` mode; if absent, defaults were recorded in the run report.
-- [ ] **Check 6:** Confirm `.drafting_state.json` is updated after each batch in Drafting Phase and ends with `status: "complete"`.
-- [ ] **Check 7:** Ensure all JSON buffers (`clipped-story.json`, `clipX-frames.json`, `selected-frames.json`) are non-empty before Final Assembly.
+- [ ] **Check 6:** Confirm `.drafting_state.json` is updated after each batch in Drafting, Selection, and Assembly and ends with `status: "complete"`.
+- [ ] **Check 7:** Ensure all JSON buffers (`clipped-story.json`, `clipX-frames.json`, `clipX-scores.json`, `selected-frames.json`, `final-partN.json`) are non-empty before the step that consumes them.
 - [ ] **Check 8:** Selected frame count equals the expected count for the mode, and every frame scores at or above threshold or is flagged `below_threshold: true` and listed in `warnings`.
-- [ ] **Check 9:** Every prompt contains the verbatim character-bible descriptors for each character in that frame.
+- [ ] **Check 9:** Every prompt contains the verbatim `character_descriptors` for each character in that frame.
 - [ ] **Check 10:** `ask_question` was called at most 2 times.
+- [ ] **Check 11:** No write call contained more than `clips_per_batch` clip(s) of content, except a single merge write when append is unsupported.
+- [ ] **Check 12:** A Progress Display message was shown before and after every clip in Steps 3, 4, 5.1 and 5.2, and the interruption notice was shown at the start of Step 4.
 
 
 > **Why?** Prevents premature completion with partial or corrupted data, ensuring downstream consumers receive valid inputs.
@@ -358,7 +394,7 @@ Before confirming completion, verify (any failure stops with `VALIDATION_FAILED`
 
 | Version | Date | Changes |
 |---------|------|---------|
-| 1.9 | 2026-10-15 | Single config-resolution rule and `config.yaml` schema; removed unused tools and network access; Step 1 now handles idempotency, resume, template checks, and directory setup; defined clip, frame, peak, and FML terms; added scoring scale, threshold failure path, and `selected-frames.json` output; added state-file schema; batched question budget with one sufficiency rule; added character bible, prompt rules, content safety, worked example, and run report; replaced `SCRIPT_FAILURE` and added new error codes; renamed `assets/final-frames.json` to `assets/final-frames.template.json`; normalized paths to `/`; removed placeholders from the description. |
+| 1.9 | 2026-10-15 | Single config-resolution rule and `config.yaml` schema; removed unused tools and network access; Step 1 now handles idempotency, resume, template checks, and directory setup; defined clip, frame, peak, and FML terms; added scoring scale, threshold failure path, and `selected-frames.json` output; added state-file schema; batched question budget with one sufficiency rule; added `character_descriptors` (stored in `clipped-story.json`), prompt rules, content safety, worked example, and run report; made Selection and Assembly batched (max 3 clips, per-clip score files, `final-partN.json` merged at the end) with a wider state file (`phase`, `clips_scored`, `clips_assembled`); clarified that a missing file on first run is normal; replaced `SCRIPT_FAILURE` and added new error codes; renamed `assets/final-frames.json` to `assets/final-frames.template.json`; normalized paths to `/`; removed placeholders from the description; added per-clip story files, a clip index in `clipped-story.json`, a Merge Rule (append when supported), `merge_final` with a `final-frames.index.json` fallback, and `max_clips_hard_limit` so large stories do not time out; added the **Progress Display** concept (per-clip user messages, resume and interruption notices), `clips_per_batch` (default 1), compact frame drafts (`max_frame_words`), and an explicit save-before-next-clip rule to stop drafting-phase timeouts. |
 | 1.8 | 2026-10-13 | Added Resource Map entries for logic files; Clarified Step 5.1 selection mode choice from config; Updated Drafting Phase state tracking details; Fixed Mermaid diagram syntax (`&` instead of `+`). |
 | 1.7 | 2026-10-13 | Fixed **Step 5.2 Final Assembly** to use pure LLM `write_file` (no exit code check) for consistency with "Zero Python/Scripting" philosophy. Updated version to 1.7. |
 | 1.6 | 2026-10-13 | Improved **Drafting Phase** to be iterative (batch processing + state tracking) for timeout safety; Fixed **Dependencies** to match "Zero Python/Scripting" philosophy. |
