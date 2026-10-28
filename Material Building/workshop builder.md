@@ -15,9 +15,14 @@ Build a workshop for recreating {Code} in incremental {stages}
 An instructor needs workshop from shared code without any assumptions.
 This workshop is intended to recreate {code}, so every step single line of {code} MUST be part of workshop
 
+### Files location
+Root folder: C:\labs\wayflow
+Environment: c:\labs\wayflow\.dev
+Project folder: C:\labs\wayflow\agent-notebook
+
 ## Output
 ---
-# Workshop Title
+# [Workshop Title]
 [workshop summary]
 
 ## Stages
@@ -59,6 +64,7 @@ Explanation:
 ## Rules
 - DO NOT Invent outside shared code
 - MUST use 'Project Setup' as the first stage
-- MUST NOT infer tools by yourself
-- Workshop MUST have every line of CODE without assumptions.
+- Workshop MUST have every line of CODE without assuming reader has code/other files.
 - MUST NOT mention 'Recreate' or related words in workshop.
+- Stage names MUST BE human-readable, describing what's happening in the stage, not technical jargon
+- MUST AVOID skills use, with an exception to 'web-search'
