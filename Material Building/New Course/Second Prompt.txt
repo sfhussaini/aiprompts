@@ -44,3 +44,4 @@ Refer the shared document
 - MUST AVOID over explanation and over engineering
 - MUST AVOID skills use
 - ONLY SKILL permitted is 'web search'
+- MUST NOT use 'Topic 1'/'Topic 2'/..., instead use the topic name
