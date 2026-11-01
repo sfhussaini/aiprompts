@@ -8,6 +8,10 @@ Research about the given topic by referring steps to generate OUTPUT
 1. Understand the shared CONTEXT and/or DOCUMENT
 2. Identify the topics from CONTEXT and/or DOCMENT
 3. Display the topic list in tabular format honoring the learning order.
+   |Sl.No.|Topic      |Sub Topic       |
+   |------|-----------|----------------|
+   |1.    |Topic Title| 1. Sub Topic #1|
+   |      |           | 2. Sub Topic #2|
 4. Ask user to confirm the topics list, and wait for 'PROCEED' instruction.
 5. Take user approval to proceed with first topic
 6. Pick the first topic and research about it over internet.
@@ -24,6 +28,9 @@ Refer the shared document
 ## Sub Topics of {Topic}
 {Summary of Sub Topics}
 Slno | Sub Topics | One liner|
+
+## {SUB TOPIC TITLE}
+{Description about the sub topic}
 
 ### Brief History
 {Brief History about the topic}
