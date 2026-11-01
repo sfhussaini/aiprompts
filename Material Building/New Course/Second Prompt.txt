@@ -21,22 +21,26 @@ Refer the shared document
 # {TOPIC_TITLE}
 {Description about the topic}
 
-## Brief History
+## Sub Topics of {Topic}
+{Summary of Sub Topics}
+Slno | Sub Topics | One liner|
+
+### Brief History
 {Brief History about the topic}
 
-## World before this {topic}
+### World before this {topic}
 {Describe how the world will be if this topic doesn't exist}
 
-## Analogy
+### Analogy
 {Describe in layman terms about the topic using realtime analogy}
 
-## Dependent Topics
+### Dependent Topics
 {Tabular representation of sub topics}
 
-## How to implement this {topic}
+### How to implement this {topic}
 {Discuss how this topic is implemented}
 
-## Code
+### Code
 {Share the code which shows how this topic is implemented}
 
 ## RULES
