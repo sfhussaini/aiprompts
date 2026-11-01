@@ -1,0 +1,9 @@
+1. Execute the first prompt > Filter the results as required
+2. Copy the first prompt response (topics / sub topics)
+3. Execute the second prompt using the copied 'topics' and 'sub topics'
+   EXAMPLE:
+     Proceed with 
+     Topic: 5
+     Title: Introduction to Oracle WayFlow
+     Sub Topics: Flow steps, Control flow edges, Data flow edges, BranchingStep, Looping flows, Variables and context providers, Parallel flows, Extended components
+4. Copy the response of 3 and use it to process Third Prompt to create Slides
