@@ -50,9 +50,14 @@ Slno | Sub Topics | One liner|
 ### Code
 {Share the code which shows how this topic is implemented}
 
+## {NEXT SUB TOPIC TITLE}
+{Description about the sub topic}
+...
+
 ## RULES
 - DO NOT invent
 - MUST AVOID over explanation and over engineering
 - MUST AVOID skills use
 - ONLY SKILL permitted is 'web search'
 - MUST NOT use 'Topic 1'/'Topic 2'/..., instead use the topic name
+- Each CODE must be complete, it MUST NOT be a snippet
