@@ -16,9 +16,9 @@ Build a hands-on workshop that guides a learner to build {CODE} step by step, in
 An instructor needs a workshop based only on the shared {CODE}. The learner has no access to {CODE} or any other file, so the workshop alone must contain every single line of {CODE}, including config and supporting files.
 
 ### Files location
-- Root folder: C:\labs\wayflow
-- Environment (virtual environment): C:\labs\wayflow\.dev
-- Project folder: C:\labs\wayflow\{PROJECT_NAME}
+- Root folder: C:\labs\ai
+- Environment (virtual environment): C:\labs\ai\.venv
+- Project folder: C:\labs\ai\{PROJECT_NAME}
 
 ## Output
 # [Workshop Title]
