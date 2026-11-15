@@ -61,10 +61,13 @@ The user's document or text. If none is given, ask the user for it and stop.
 |-------------------------|-----|
 
 ### How to Implement <Sub topic name>
-<Numbered steps, 5-8 steps, with one sentence of explanation each>
+<Numbered steps, minimum 5 steps, with one sentence of explanation each>
+
+### Workshop made out of How to Implement 
+<Numbered steps, minimum 5 steps, with one sentence of explanation each>
 
 ### Code
-<Complete code in a fenced block, with the language named, with a 3-5 line explanation after it>
+<Complete code for workshop in a fenced block, with the language named, with a 3-5 line explanation after it>
 
 ## Slides
 ---
